@@ -1,0 +1,25 @@
+dependencies: \
+  /Users/bomsokkim/Work/Flipicker/cocos2d/cocos/editor-support/spine/SkeletonBounds.c \
+  /Users/bomsokkim/Work/Flipicker/cocos2d/build/../cocos/editor-support/spine/SkeletonBounds.h \
+  /Users/bomsokkim/Work/Flipicker/cocos2d/build/../cocos/editor-support/spine/BoundingBoxAttachment.h \
+  /Users/bomsokkim/Work/Flipicker/cocos2d/build/../cocos/editor-support/spine/Attachment.h \
+  /Users/bomsokkim/Work/Flipicker/cocos2d/build/../cocos/editor-support/spine/Atlas.h \
+  /Users/bomsokkim/Work/Flipicker/cocos2d/build/../cocos/editor-support/spine/Slot.h \
+  /Users/bomsokkim/Work/Flipicker/cocos2d/build/../cocos/editor-support/spine/Bone.h \
+  /Users/bomsokkim/Work/Flipicker/cocos2d/build/../cocos/editor-support/spine/BoneData.h \
+  /Users/bomsokkim/Work/Flipicker/cocos2d/build/../cocos/editor-support/spine/SlotData.h \
+  /Users/bomsokkim/Work/Flipicker/cocos2d/build/../cocos/editor-support/spine/Skeleton.h \
+  /Users/bomsokkim/Work/Flipicker/cocos2d/build/../cocos/editor-support/spine/SkeletonData.h \
+  /Users/bomsokkim/Work/Flipicker/cocos2d/build/../cocos/editor-support/spine/Skin.h \
+  /Users/bomsokkim/Work/Flipicker/cocos2d/build/../cocos/editor-support/spine/EventData.h \
+  /Users/bomsokkim/Work/Flipicker/cocos2d/build/../cocos/editor-support/spine/Animation.h \
+  /Users/bomsokkim/Work/Flipicker/cocos2d/build/../cocos/editor-support/spine/Event.h \
+  /Users/bomsokkim/Work/Flipicker/cocos2d/build/../cocos/editor-support/spine/IkConstraintData.h \
+  /Users/bomsokkim/Work/Flipicker/cocos2d/build/../cocos/editor-support/spine/IkConstraint.h \
+  /Users/bomsokkim/Work/Flipicker/cocos2d/build/../cocos/editor-support/spine/extension.h \
+  /Users/bomsokkim/Work/Flipicker/cocos2d/build/../cocos/editor-support/spine/AttachmentLoader.h \
+  /Users/bomsokkim/Work/Flipicker/cocos2d/build/../cocos/editor-support/spine/RegionAttachment.h \
+  /Users/bomsokkim/Work/Flipicker/cocos2d/build/../cocos/editor-support/spine/MeshAttachment.h \
+  /Users/bomsokkim/Work/Flipicker/cocos2d/build/../cocos/editor-support/spine/SkinnedMeshAttachment.h \
+  /Users/bomsokkim/Work/Flipicker/cocos2d/build/../cocos/editor-support/spine/AnimationState.h \
+  /Users/bomsokkim/Work/Flipicker/cocos2d/build/../cocos/editor-support/spine/AnimationStateData.h
