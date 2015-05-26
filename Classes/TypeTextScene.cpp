@@ -54,12 +54,13 @@ bool TypeText::init(){
         menuscale = menuscale / 2;
     }
     
-    auto menuGotoFrameSelect = MenuItemImage::create(
+    menuGotoFrameSelect = MenuItemImage::create(
                                                     path+"02input_selmenu_blackbg_default.png",
                                                     path+"02input_selmenu_blackbg_touch.png",
                                                      CC_CALLBACK_1(TypeText::goFrameSelect, this));
     menuGotoFrameSelect->setScale(r*menuscale);
-    auto menuGotoSetting = MenuItemImage::create(
+    
+    menuGotoSetting = MenuItemImage::create(
                                                  path+"02input_setting_blackbg_default.png",
                                                  path+"02input_setting_blackbg_touch.png",
                                                  CC_CALLBACK_1(TypeText::goColorPicker, this));
@@ -79,50 +80,58 @@ bool TypeText::init(){
     //ui::TextField *textInputObj;
     
     auto textSize = Size(visibleSize.width/(g_frameNumber==2?1:2),visibleSize.height/2);
+    auto touchSize = Size(textSize.width,textSize.height/2);
     auto rect = Rect(0,0,visibleSize.width/(g_frameNumber==2?1:2),visibleSize.height/2);
     middleVec = Vec2(origin.x+visibleSize.width/2,origin.y+visibleSize.height/2);
     
-    
-    std::vector<Vec2> anchors;
     if(g_frameNumber==2){
         anchors = {
             Vec2(0.5f,0.0f),Vec2(0.5f,1.0f)
+//            Vec2::ANCHOR_MIDDLE,Vec2::ANCHOR_MIDDLE
+        };
+        points = {
+            Vec2(visibleSize.width/2,visibleSize.height/4),Vec2(visibleSize.width/2,visibleSize.height/4)
         };
     }else if(g_frameNumber==4){
         anchors = {
           Vec2(1.0f,0.0f),Vec2(0.0f,0.0f),Vec2(1.0f,1.0f),Vec2(0.0f,1.0f)
+//            Vec2::ANCHOR_MIDDLE,Vec2::ANCHOR_MIDDLE,Vec2::ANCHOR_MIDDLE,Vec2::ANCHOR_MIDDLE
+        };
+        points = {
+            Vec2(visibleSize.width/4,visibleSize.height/4),Vec2(visibleSize.width/4,visibleSize.height/4),Vec2(visibleSize.width/4,visibleSize.height/4),Vec2(visibleSize.width/4,visibleSize.height/4)
         };
     }
     
-    auto temp = ui::EditBox::create(Size(300, 300), "transparent.png");
-    temp->setDelegate((cocos2d::ui::EditBoxDelegate *)this);
-    this->addChild(temp,100);
-    
     for(auto i = 0; i < g_frameNumber; i++){
-        
-        auto textInputObj = ui::TextField::create("|", "GROTESKIA.otf", 32);
-        textInputObj->setPosition(Vec2::ZERO);
-        textInputObj->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
+//        auto textInputObj = ui::TextField::create("|", "GROTESKIA.otf", 32);
+//        textInputObj->setPosition(Vec2::ZERO);
+//        textInputObj->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
+//        textInputObj->setPlaceHolder("ANOTHER");
+//        textInputObj->setAttachWithIME(true); // TRUE
+//        textInputObj->ignoreContentAdaptWithSize(false);
+//        textInputObj->setContentSize(textSize);
+//        textInputObj->setTextHorizontalAlignment(TextHAlignment::CENTER);
+//        textInputObj->setTextVerticalAlignment(TextVAlignment::CENTER);
+//        textInputObj->setColor(Color3B::BLACK);
+//        this->texts.push_back(textInputObj);
+        auto textInputObj = ui::EditBox::create(touchSize, "transparent.png");
+        textInputObj->setFontName("GROTESKIA");//Marker Felt
+//        textInputObj->setFontName("Marker Felt");
+//        textInputObj->setPosition(Vec2::ZERO);
+        textInputObj->setPosition(points[i]);
+        textInputObj->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
         textInputObj->setPlaceHolder("ANOTHER");
-        textInputObj->setAttachWithIME(true); // TRUE
+        textInputObj->setPlaceholderFontName("GROTESKIA");
+        textInputObj->setPlaceholderFontSize(int(fontBaseSize*r));
         textInputObj->ignoreContentAdaptWithSize(false);
-        textInputObj->setContentSize(textSize);
-        textInputObj->setTextHorizontalAlignment(TextHAlignment::CENTER);
-        textInputObj->setTextVerticalAlignment(TextVAlignment::CENTER);
-        //textInputObj->addEventListener(CC_CALLBACK_1(TypeText::typeHandler, this));
-        textInputObj->setColor(Color3B::BLACK);
-        //        textInputObj->addTouchEventListener([&](Ref* sender, ui::Widget::TouchEventType type){
-        //            log("editing");
-        //        });
-        //        textInputObj->setDelegate(this);
-
+        textInputObj->setInputMode(cocos2d::ui::EditBox::InputMode::SINGLE_LINE);
+//        textInputObj->setContentSize(fontSize);
+        textInputObj->setColor(Color3B::RED);
+        textInputObj->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
         this->texts.push_back(textInputObj);
         
-       
         auto sprite = Sprite::create("white1200x1200.png", rect);
-//        sprite->setColor(colorTable[g_defaultcolor].color);
-        sprite->setColor(i==0||i==3?Color3B(0x19,0x19,0x19):Color3B(0x3,0x3,0x3));
-        CCLOG("NUM IS %d",g_defaultcolor);
+        sprite->setColor(GetSpriteColor(i));
         sprite->setPosition(middleVec);
         sprite->setAnchorPoint(anchors[i]);
         sprite->addChild(textInputObj);
@@ -131,37 +140,76 @@ bool TypeText::init(){
         AddSpriteBtns(sprite, i);
         
         this->addChild(sprite,2);
+        
+        textInputObj->setDelegate(this);
+        
+//        textInputObj->addTouchEventListener([&](Ref* sender, ui::Widget::TouchEventType type){
+//            CCLOG("num is %d %d",i, sprite->getTag());
+//            log("editing");
+//        });
+       
+
 //        break;
     }
-    
-//    ui::EditBox *editbox;
-//        editbox = ui::EditBox::create(Size(visibleSize.width, visibleSize.height/2),"HelloWorld.png");
-//        editbox->setPosition(Vec2(origin.x+visibleSize.width/2.0f,origin.y+visibleSize.height*1.0f/4.0f));
-//        editbox->setPlaceHolder("this is edit box");
-//        editbox->setFont("fonts/GROTESKIA OBLIQUE.otf", 25);
-//        editbox->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
-//        this->addChild(editbox);
-    //Director::getInstance()->getOpenGLView()->setIMEKeyboardState(true);
-//    }else if(g_frameNumber==4){
-    
-//    }
     return true;
 }
 
 void TypeText::editBoxEditingDidBegin(cocos2d::ui::EditBox *editBox)
 {
     // EditBox편집이 시작될 때 발생하는 이벤트
+    keyboard_up = true;
+    auto sp = editBox->getParent();
+    sp->setColor(colorTable[g_defaultcolor].color);
+    editBox->setFontColor(Color3B::BLACK);
 }
 void TypeText::editBoxEditingDidEnd(cocos2d::ui::EditBox *editBox)
 {
     // EditBox편집이 끝날 때 발생하는 이벤트
+    auto sp = editBox->getParent();
+    auto i = sp->getTag() - 100;
+    sp->setColor(GetSpriteColor(i));
+    editBox->setFontColor(colorTable[g_defaultcolor].color);
+    
+    auto span = labels[i];
+    span->setString(editBox->getText());
+    span->setFontSize(GetFontSize(utf8_strlen(editBox->getText())));
+    span->setColor(colorTable[g_defaultcolor].color);
+    span->setVisible(true);
+    
+    editBox->setVisible(true);
+    editBox->setText("");
+    
 }
 void TypeText::editBoxTextChanged(cocos2d::ui::EditBox *editBox, const std::string &text)
 {
     // EditBox내 Text가 변경될 때 발생하는 이벤트
+    auto len = utf8_strlen(text.c_str());
+    auto fontsize = GetFontSize(len);
+    CCLOG("%s %d %d",text.c_str(),len, fontsize);
+    editBox->setFontSize(fontsize);
 }
 void TypeText::editBoxReturn(cocos2d::ui::EditBox *editBox){
+    keyboard_up = false;
     // edit box return
+}
+
+int TypeText::GetFontSize(int len){
+    float size = 1.0f;
+    size *= fontBaseSize;
+    if(len >= 15){
+        size *= 8.0f;
+    }else if(len >= 10){
+        size *= 10.0f;
+    }else if(size >= 5){
+        size *= 12.0f;
+    }else if(size >= 3){
+        size *= 12.0f;
+    }else {
+        size *= 12.0f;
+    }
+    size *= r;
+    size = (int)size;
+    return size;
 }
 
 void TypeText::goFrameSelect(Ref* pSender){
@@ -170,41 +218,58 @@ void TypeText::goFrameSelect(Ref* pSender){
     Director::getInstance()->replaceScene(TransitionFlipY::create(0.5, s));
 }
 
-void TypeText::OpenText(Ref* pSender){
-    // type 창 열기
+cocos2d::Color3B TypeText::GetSpriteColor(int i){
+    auto color = i==0||i==3?Color3B(0x19,0x19,0x19):Color3B(0x3,0x3,0x3);
+    return color;
 }
 
 void TypeText::AddSpriteBtns(Sprite* pSender, int i){
     auto refreshBtn = MenuItemImage::create(
                                             path+"02input_refresh_colorbg_default.png",
                                             path+colorTable[g_defaultcolor].refresh,
+                                            path+"02input_refresh_colorbg_default.png",
                                             CC_CALLBACK_1(TypeText::DoRefresh, this, i));
     refreshBtn->setScale(r * menuscale);
     auto acceptBtn = MenuItemImage::create(
                                             path+"02input_ok_colorbg_default.png",
                                             path+colorTable[g_defaultcolor].select,
+                                            path+colorTable[g_defaultcolor].select,
                                             CC_CALLBACK_1(TypeText::DoComplete, this, i));
     acceptBtn->setScale(r * menuscale);
-    refreshs.push_back(refreshBtn);
-    accepts.push_back(acceptBtn);
     
     auto menu = Menu::create(refreshBtn,acceptBtn,nullptr);
     menu->setAnchorPoint(Vec2(0.5f,0));
     menu->alignItemsHorizontallyWithPadding(100);
     menu->setPosition(Vec2(pSender->getContentSize().width/2, 100));
     pSender->addChild(menu);
+    
+    auto label = LabelTTF::create();
+    label->setColor(colorTable[g_defaultcolor].color);
+    label->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+    label->setPosition(points[i]);
+    label->setVisible(false);
+    pSender->addChild(label,8);
+    
+    labels.push_back(label);
+    refreshs.push_back(refreshBtn);
+    accepts.push_back(acceptBtn);
 }
 
 void TypeText::DoRefresh(cocos2d::Ref *pSender, int i){
     // refresh textfield
-    this->texts[i]->setString("");
+//    this->texts[i]->setString("");
+    this->labels[i]->setString("");
+    this->texts[i]->setText("");
     CCLOG("parent tag is %d",i);
   
 }
 
-void TypeText::HideSubMenu(int i){
-    refreshs[i]->setVisible(false);
-    accepts[i]->setVisible(false);
+void TypeText::AcceptSubMenu(int i){
+    auto temp = accepts[i];
+    temp->setEnabled(false);
+    auto temp2 = refreshs[i];
+    temp2->setEnabled(false);
+    texts[i]->setEnabled(false);
 }
 
 void TypeText::ShowSubMenu(int i){
@@ -214,10 +279,40 @@ void TypeText::ShowSubMenu(int i){
 
 void TypeText::DoComplete(Ref* pSender, int i){
     // accept textfield
-    CCLOG("parent tag is %d",i);
-    HideSubMenu(i);
+//    CCLOG("parent tag is %d",i);
+    std::string str;
+    if(keyboard_up == true){
+        str = texts[i]->getText();
+    }else{
+        str = labels[i]->getString();
+    }
+    auto len = utf8_strlen(str);
+    if(len<1){
+        MessageBox("내용을 입력하세요", "");
+        return;
+    }
+    
+    AcceptSubMenu(i);
     this->isCompletes[i] = true;
     this->CheckAllComplete();
+}
+
+int TypeText::utf8_strlen(const std::string& str)
+{
+    int c,i,ix,q;
+    int len = int(str.length());
+    for (q=0, i=0, ix=len; i < ix; i++, q++)
+    {
+        c = (unsigned char) str[i];
+        if      (c>=0   && c<=127) i+=0;
+        else if ((c & 0xE0) == 0xC0) i+=1;
+        else if ((c & 0xF0) == 0xE0) i+=2;
+        else if ((c & 0xF8) == 0xF0) i+=3;
+        //else if (($c & 0xFC) == 0xF8) i+=4; // 111110bb //byte 5, unnecessary in 4 byte UTF-8
+        //else if (($c & 0xFE) == 0xFC) i+=5; // 1111110b //byte 6, unnecessary in 4 byte UTF-8
+        else return 0;//invalid utf8
+    }
+    return q;
 }
 
 void TypeText::CheckAllComplete(){
@@ -226,6 +321,8 @@ void TypeText::CheckAllComplete(){
         if(check==false) allclear = false;
     });
     if (allclear) {
+        menuGotoFrameSelect->setEnabled(false);
+        menuGotoSetting->setEnabled(false);
         GoPick();
     }
     
@@ -233,9 +330,19 @@ void TypeText::CheckAllComplete(){
 
 void TypeText::GoPick(){
     this->random_number = rand() % g_frameNumber;
-    
-    this->result = this->texts[this->random_number]->getString();
+    auto dimcolor = Color4B::BLACK;
+    dimcolor = Color4B(0,0,0,150);
 
+    DimLayer = LayerColor::create(dimcolor, visibleSize.width, visibleSize.height);
+    DimLayer->setPosition(Vec2::ZERO);
+    DimLayer->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
+    this->addChild(DimLayer, 8);
+    
+//    this->result = this->texts[this->random_number]->getString();
+    this->result = this->texts[this->random_number]->getText();
+    
+    this->
+    
     ShowFlippingScene();
 }
 
@@ -280,7 +387,7 @@ void TypeText::ShowFlippingScene(){
     FlippingLayer->setPosition(Vec2::ZERO);
     FlippingCard->addChild(FlippingCard2);
     FlippingLayer->addChild(FlippingCard);
-    this->addChild(FlippingLayer,5);
+    this->addChild(FlippingLayer,9);
     
     auto BaseFontSize = 75;
     
@@ -304,9 +411,6 @@ void TypeText::ShowFlippingScene(){
     labelLayer->setPosition(Vec2(0, visibleSize.height/2 - h1 / 2 - h1 * 0.2 * r));
     labelLayer->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     this->addChild(labelLayer, 10);
-    
-    // b
-    
     
     // animation
     auto flipAnimation = RotateBy::create(2, Vec3(0, 360, 0));

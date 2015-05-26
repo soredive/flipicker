@@ -12,7 +12,7 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 
-class TypeText : public cocos2d::Layer
+class TypeText : public cocos2d::Layer, public cocos2d::ui::EditBoxDelegate
 {
 public:
     static cocos2d::Scene* createScene();
@@ -25,13 +25,24 @@ public:
     cocos2d::MenuItemImage* btnRefresh;
     cocos2d::MenuItemImage* btnOk;
     cocos2d::Menu* menuInType;
+    
+    // top btns
+    cocos2d::MenuItemImage* menuGotoFrameSelect;
+    cocos2d::MenuItemImage* menuGotoSetting;
+    
+    // flipping dim layer
+    cocos2d::LayerColor* DimLayer;
    
     // select frame backgroud layer, input, refresh btn, accept btn
     std::vector<cocos2d::Sprite *> sprites;
-    std::vector<cocos2d::ui::TextField *> texts;
+    std::vector<cocos2d::ui::EditBox *> texts;
     std::vector<cocos2d::MenuItemImage *> refreshs;
     std::vector<cocos2d::MenuItemImage *> accepts;
+    std::vector<cocos2d::LabelTTF *> labels;
     std::vector<bool> isCompletes={};
+    
+    // check is keyboard up or down
+    bool keyboard_up = false;
     
     // selected string
     int random_number;
@@ -42,6 +53,7 @@ public:
     float menuscale = 1.7;
     std::string path = "res/basic/";
     float padding = 90.0f;
+    float fontBaseSize = 20;
     
     // flipping scene
     cocos2d::Layer* FlippingLayer;
@@ -51,6 +63,8 @@ public:
     virtual void editBoxEditingDidEnd(cocos2d::ui::EditBox* editBox);
     virtual void editBoxTextChanged(cocos2d::ui::EditBox* editBox, const std::string& text);
     virtual void editBoxReturn(cocos2d::ui::EditBox* editBox);
+    std::vector<cocos2d::Vec2> anchors;
+    std::vector<cocos2d::Vec2> points;
     
     int currentItem;
     
@@ -65,8 +79,8 @@ public:
     // to refresh input text
     void DoRefresh(cocos2d::Ref* pSender, int i);
     
-    // to hide sub-menu
-    void HideSubMenu(int i);
+    // to accept sub-menu
+    void AcceptSubMenu(int i);
     
     // to show sub-menu
     void ShowSubMenu(int i);
@@ -79,13 +93,18 @@ public:
     
     // adding flipping scene
     void ShowFlippingScene();
-
-    void AddMenuInFrame(cocos2d::Ref* pSender);
     
-    void OpenText(cocos2d::Ref* pSender);
+    // type pannel color
+    cocos2d::Color3B GetSpriteColor(int i);
     
+    // check string length
+    int utf8_strlen(const std::string& str);
+    int GetFontSize(int string_length);
+    
+    // go to frame select
     void goFrameSelect(cocos2d::Ref* pSender);
     
+    // go to colorpicker
     void goColorPicker(cocos2d::Ref* pSender);
 
     CREATE_FUNC(TypeText);
