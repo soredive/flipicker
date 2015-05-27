@@ -13,13 +13,13 @@ std::string select_result;
 
 std::vector<struct colorinfo> colorTable = {
     {Color3B(255,205,0),"#ffcd00","01select_2f_touch_1yellow.png","01select_4f_touch_1yellow.png","02input_ok_blackbg_selected_1yellow.png","02input_refresh_blackbg_touch_1yellow.png"},
-    
-        {Color3B(106,208,17),"#6ad011","01select_2f_touch.png","01select_4f_touch.png","02input_ok_blackbg_selected.png","02input_refresh_blackbg_touch.png"}, // default green color
+    {Color3B(106,208,17),"#6ad011","01select_2f_touch.png","01select_4f_touch.png","02input_ok_blackbg_selected.png","02input_refresh_blackbg_touch.png"}, // default green color
     {Color3B(245,90,0),"#f55a00","01select_2f_touch_3orange.png","01select_4f_touch_3orange.png","02input_ok_blackbg_selected_3orange.png","02input_refresh_blackbg_touch_3orange.png"},
     {Color3B(0,144,192),"#0090c0","01select_2f_touch_4blue.png","01select_4f_touch_4blue.png","02input_ok_blackbg_selected_4blue.png","02input_refresh_blackbg_touch_4blue.png"},
     {Color3B(245,0,0),"#f50000","01select_2f_touch_5red.png","01select_4f_touch_5red.png","02input_ok_blackbg_selected_5red.png","02input_refresh_blackbg_touch_5red.png"},
     {Color3B(143,45,255),"#8f2dff","01select_2f_touch_6violet.png","01select_4f_touch_6violet.png","02input_ok_blackbg_selected_6violet.png","02input_refresh_blackbg_touch_6violet.png"},
     {Color3B(255,27,162),"#ff1ba2","01select_2f_touch_7pink.png","01select_4f_touch_7pink.png","02input_ok_blackbg_selected_7pink.png","02input_refresh_blackbg_touch_7pink.png"},
+    
     {Color3B(178,45,255),"#b22dff","01select_2f_touch_8purple.png","01select_4f_touch_8purple.png","02input_ok_blackbg_selected_8purple.png","02input_refresh_blackbg_touch_8purple.png"}
 };
 // /global variables

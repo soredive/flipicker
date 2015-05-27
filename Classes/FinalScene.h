@@ -62,44 +62,7 @@ public:
     // flipping scene
     cocos2d::Layer* FlippingLayer;
     
-    // for edit box
-    virtual void editBoxEditingDidBegin(cocos2d::ui::EditBox* editBox);
-    virtual void editBoxEditingDidEnd(cocos2d::ui::EditBox* editBox);
-    virtual void editBoxTextChanged(cocos2d::ui::EditBox* editBox, const std::string& text);
-    virtual void editBoxReturn(cocos2d::ui::EditBox* editBox);
-    std::vector<cocos2d::Vec2> anchors;
-    std::vector<cocos2d::Vec2> points;
-    
-    int currentItem;
-    
     virtual bool init();
-    
-    // add refresh
-    void AddSpriteBtns(cocos2d::Sprite* pSender, int i);
-    
-    // to something when accecpt button clicked
-    void DoComplete(cocos2d::Ref* pSender, int i);
-    
-    // to refresh input text
-    void DoRefresh(cocos2d::Ref* pSender, int i);
-    
-    // to accept sub-menu
-    void AcceptSubMenu(int i);
-    
-    // to show sub-menu
-    void ShowSubMenu(int i);
-    
-    // to check all complete
-    void CheckAllComplete();
-    
-    // to go pick item
-    void GoPick();
-    
-    // trans to pick scene
-    void TransToPick(float dt);
-    
-    // adding flipping scene
-    void ShowFlippingScene();
     
     // type pannel color
     cocos2d::Color3B GetSpriteColor(int i);

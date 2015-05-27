@@ -26,7 +26,7 @@ extern std::string select_result;
 Scene* FinalScene::createScene(){
     auto s = Scene::create();
     
-    auto l = TypeText::create();
+    auto l = FinalScene::create();
     
     s->addChild(l);
     
@@ -71,7 +71,6 @@ bool FinalScene::init(){
     menuTop->setPosition(Vec2::ZERO);
     this->addChild(menuTop,3);
     
-    
     {
         // display result
         auto str = select_result;
@@ -89,8 +88,6 @@ bool FinalScene::init(){
         label->setPosition(visibleSize.width/2, visibleSize.height/2);
         label->setVisible(true);
         this->addChild(label);
-        
-        
     }
     
     return true;

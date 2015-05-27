@@ -378,11 +378,11 @@ void TypeText::GoPick(){
 }
 
 void TypeText::TransToPick(float dt){
-    std::string a = "선택은 ";
-    a += result;
-    MessageBox(a.c_str(), "선택 결과");
-//    auto nextscene = FinalScene::createScene();
-//    Director::getInstance()->replaceScene(TransitionFadeBL::create(1.0f, nextscene));
+//    std::string a = "선택은 ";
+//    a += result;
+//    MessageBox(a.c_str(), "선택 결과");
+    auto nextscene = FinalScene::createScene();
+    Director::getInstance()->replaceScene(TransitionFadeBL::create(1.0f, nextscene));
 }
 
 void TypeText::ShowFlippingScene(){
