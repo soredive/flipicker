@@ -26,6 +26,9 @@ public:
     cocos2d::MenuItemImage* btnOk;
     cocos2d::Menu* menuInType;
     
+    // text dirty check
+    std::vector<bool>dirties;
+    
     // text placehoder (label) color
     cocos2d::Color3B PlaceholderColor;
     

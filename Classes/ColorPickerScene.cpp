@@ -79,7 +79,6 @@ bool ColorPicker::init(){
         tempItem->setAnchorPoint(anchor);
         tempItem->setPosition(center);
         
-        CCLOG("i : %d",i);
         tempItem->setTag(10+i); // 10, 11, ... 17 color
         this->addChild(tempItem,1);
         colorList.push_back(tempItem);

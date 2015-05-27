@@ -106,6 +106,8 @@ bool TypeText::init(){
     }
     
     for(auto i = 0; i < g_frameNumber; i++){
+        dirties.push_back(false);
+        
 //        auto textInputObj = ui::TextField::create("|", "GROTESKIA.otf", 32);
 //        textInputObj->setPosition(Vec2::ZERO);
 //        textInputObj->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
@@ -145,14 +147,6 @@ bool TypeText::init(){
         this->addChild(sprite,2);
         
         textInputObj->setDelegate(this);
-        
-//        textInputObj->addTouchEventListener([&](Ref* sender, ui::Widget::TouchEventType type){
-//            CCLOG("num is %d %d",i, sprite->getTag());
-//            log("editing");
-//        });
-       
-
-//        break;
     }
     return true;
 }
@@ -178,15 +172,19 @@ void TypeText::editBoxEditingDidEnd(cocos2d::ui::EditBox *editBox)
     editBox->setFontColor(colorTable[g_defaultcolor].color);
     
     auto span = labels[i];
-    span->setString(str);
+    
     
     //span->setFontSize(fontsize);
     if(len>0){
         span->setVisible(true);
+        span->setString(str);
         span->setColor(colorTable[g_defaultcolor].color);
     }else{
         span->setVisible(true);
+        span->setString("ANOTHER");
         span->setColor(PlaceholderColor);
+        
+        dirties[i] = false;// reset dirty
     }
     
     editBox->setText("");
@@ -203,6 +201,7 @@ void TypeText::editBoxTextChanged(cocos2d::ui::EditBox *editBox, const std::stri
     // EditBox내 Text가 변경될 때 발생하는 이벤트
     auto sp = editBox->getParent();
     auto i = sp->getTag() - 100;
+    dirties[i] = true;
     auto len = utf8_strlen(text.c_str());
     auto fontsize = (int)(GetFontSize(len) * r);
     if(len>0){
@@ -288,10 +287,13 @@ void TypeText::AddSpriteBtns(Sprite* pSender, int i){
 void TypeText::DoRefresh(cocos2d::Ref *pSender, int i){
     // refresh textfield
 //    this->texts[i]->setString("");
-    this->labels[i]->setString("");
+    this->labels[i]->setString("ANOTHER");
     this->texts[i]->setText("");
-    CCLOG("parent tag is %d",i);
-  
+    texts[i]->setVisible(true);
+    labels[i]->setVisible(true);
+    labels[i]->setColor(PlaceholderColor);
+    
+    dirties[i] = false; // reset dirties
 }
 
 void TypeText::AcceptSubMenu(int i){
@@ -308,8 +310,6 @@ void TypeText::ShowSubMenu(int i){
 }
 
 void TypeText::DoComplete(Ref* pSender, int i){
-    // accept textfield
-//    CCLOG("parent tag is %d",i);
     std::string str;
     if(keyboard_up == true){
         str = texts[i]->getText();
@@ -317,7 +317,7 @@ void TypeText::DoComplete(Ref* pSender, int i){
         str = labels[i]->getString();
     }
     auto len = utf8_strlen(str);
-    if(len<1){
+    if(len<1 || dirties[i] == false){
         MessageBox("내용을 입력하세요", "");
         
         return;
