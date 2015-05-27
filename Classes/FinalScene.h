@@ -1,18 +1,18 @@
 //
-//  TypeTextScene.h
+//  FinalScene.h
 //  Flipicker
 //
-//  Created by BomSok Kim on 2015. 5. 14..
+//  Created by BomSok Kim on 2015. 5. 27..
 //
 //
 
-#ifndef __Flipicker__TypeTextScene__
-#define __Flipicker__TypeTextScene__
+#ifndef __Flipicker__FinalScene__
+#define __Flipicker__FinalScene__
 
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 
-class TypeText : public cocos2d::Layer, public cocos2d::ui::EditBoxDelegate
+class FinalScene : public cocos2d::LayerColor
 {
 public:
     static cocos2d::Scene* createScene();
@@ -35,7 +35,7 @@ public:
     
     // flipping dim layer
     cocos2d::LayerColor* DimLayer;
-   
+    
     // select frame backgroud layer, input, refresh btn, accept btn
     std::vector<cocos2d::Sprite *> sprites;
     std::vector<cocos2d::ui::EditBox *> texts;
@@ -113,8 +113,9 @@ public:
     
     // go to colorpicker
     void goColorPicker(cocos2d::Ref* pSender);
-
-    CREATE_FUNC(TypeText);
+    
+    CREATE_FUNC(FinalScene);
+    
 };
 
-#endif /* defined(__Flipicker__TypeTextScene__) */
+#endif /* defined(__Flipicker__FinalScene__) */

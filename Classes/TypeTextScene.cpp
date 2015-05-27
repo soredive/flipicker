@@ -10,6 +10,7 @@
 #include "HelloWorldScene.h"
 #include "FrameSelectScene.h"
 #include "ColorPickerScene.h"
+#include "FinalScene.h"
 
 #include "ui/CocosGUI.h"
 
@@ -20,6 +21,7 @@ USING_NS_CC;
 extern int g_frameNumber;
 extern int g_defaultcolor;
 extern std::vector<struct colorinfo> colorTable;
+extern std::string select_result;
 
 Scene* TypeText::createScene(){
     auto s = Scene::create();
@@ -43,6 +45,8 @@ bool TypeText::init(){
         for(auto i = 0; i < g_frameNumber; i++){
             this->isCompletes.push_back(false);
         }
+        
+        PlaceholderColor = Color3B(0x33,0x33,0x33);
    }
     
     // size factor
@@ -81,13 +85,12 @@ bool TypeText::init(){
     
     auto textSize = Size(visibleSize.width/(g_frameNumber==2?1:2),visibleSize.height/2);
     auto touchSize = Size(textSize.width,textSize.height/2);
-    auto rect = Rect(0,0,visibleSize.width/(g_frameNumber==2?1:2),visibleSize.height/2);
+    rect = Rect(0,0,visibleSize.width/(g_frameNumber==2?1:2),visibleSize.height/2);
     middleVec = Vec2(origin.x+visibleSize.width/2,origin.y+visibleSize.height/2);
     
     if(g_frameNumber==2){
         anchors = {
             Vec2(0.5f,0.0f),Vec2(0.5f,1.0f)
-//            Vec2::ANCHOR_MIDDLE,Vec2::ANCHOR_MIDDLE
         };
         points = {
             Vec2(visibleSize.width/2,visibleSize.height/4),Vec2(visibleSize.width/2,visibleSize.height/4)
@@ -120,9 +123,9 @@ bool TypeText::init(){
 //        textInputObj->setPosition(Vec2::ZERO);
         textInputObj->setPosition(points[i]);
         textInputObj->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
-        textInputObj->setPlaceHolder("ANOTHER");
-        textInputObj->setPlaceholderFontName("GROTESKIA");
-        textInputObj->setPlaceholderFontSize(int(fontBaseSize*r));
+//        textInputObj->setPlaceHolder("ANOTHER");
+//        textInputObj->setPlaceholderFontName("GROTESKIA");
+//        textInputObj->setPlaceholderFontSize(int(GetFontSize(1)*r));
         textInputObj->ignoreContentAdaptWithSize(false);
         textInputObj->setInputMode(cocos2d::ui::EditBox::InputMode::SINGLE_LINE);
 //        textInputObj->setContentSize(fontSize);
@@ -165,27 +168,48 @@ void TypeText::editBoxEditingDidBegin(cocos2d::ui::EditBox *editBox)
 void TypeText::editBoxEditingDidEnd(cocos2d::ui::EditBox *editBox)
 {
     // EditBox편집이 끝날 때 발생하는 이벤트
+    auto str = editBox->getText();
+    auto len = utf8_strlen(str);
+    auto fontsize = (int) (GetFontSize((int)len) * r);
+    
     auto sp = editBox->getParent();
     auto i = sp->getTag() - 100;
     sp->setColor(GetSpriteColor(i));
     editBox->setFontColor(colorTable[g_defaultcolor].color);
     
     auto span = labels[i];
-    span->setString(editBox->getText());
-    span->setFontSize(GetFontSize(utf8_strlen(editBox->getText())));
-    span->setColor(colorTable[g_defaultcolor].color);
-    span->setVisible(true);
+    span->setString(str);
     
-    editBox->setVisible(true);
+    //span->setFontSize(fontsize);
+    if(len>0){
+        span->setVisible(true);
+        span->setColor(colorTable[g_defaultcolor].color);
+    }else{
+        span->setVisible(true);
+        span->setColor(PlaceholderColor);
+    }
+    
     editBox->setText("");
-    
+    //editBox->setVisible(true);
+    if(len > 0){
+        editBox->setPlaceHolder("");
+    }else{
+      
+    }
 }
+
 void TypeText::editBoxTextChanged(cocos2d::ui::EditBox *editBox, const std::string &text)
 {
     // EditBox내 Text가 변경될 때 발생하는 이벤트
+    auto sp = editBox->getParent();
+    auto i = sp->getTag() - 100;
     auto len = utf8_strlen(text.c_str());
-    auto fontsize = GetFontSize(len);
-    CCLOG("%s %d %d",text.c_str(),len, fontsize);
+    auto fontsize = (int)(GetFontSize(len) * r);
+    if(len>0){
+        labels[i]->setVisible(false);
+    }else{
+        labels[i]->setVisible(true);
+    }
     editBox->setFontSize(fontsize);
 }
 void TypeText::editBoxReturn(cocos2d::ui::EditBox *editBox){
@@ -243,17 +267,23 @@ void TypeText::AddSpriteBtns(Sprite* pSender, int i){
     menu->setPosition(Vec2(pSender->getContentSize().width/2, 100));
     pSender->addChild(menu);
     
-    auto label = LabelTTF::create();
-    label->setColor(colorTable[g_defaultcolor].color);
+    auto SizeLabel = Size(rect.size.width*0.8, rect.size.height*0.8);
+    auto label = Label::createWithTTF("ANOTHER", "fonts/GROTESKIA.otf", (int)(GetFontSize(10)*r), SizeLabel);
+    label->setHorizontalAlignment(TextHAlignment::CENTER);
+    label->setVerticalAlignment(TextVAlignment::CENTER);
+//    label->setColor(colorTable[g_defaultcolor].color);
+    label->setColor(PlaceholderColor);
     label->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     label->setPosition(points[i]);
-    label->setVisible(false);
+    label->setVisible(true);
     pSender->addChild(label,8);
     
     labels.push_back(label);
     refreshs.push_back(refreshBtn);
     accepts.push_back(acceptBtn);
 }
+
+
 
 void TypeText::DoRefresh(cocos2d::Ref *pSender, int i){
     // refresh textfield
@@ -289,12 +319,13 @@ void TypeText::DoComplete(Ref* pSender, int i){
     auto len = utf8_strlen(str);
     if(len<1){
         MessageBox("내용을 입력하세요", "");
+        
         return;
     }
     
     AcceptSubMenu(i);
-    this->isCompletes[i] = true;
-    this->CheckAllComplete();
+    isCompletes[i] = true;
+    CheckAllComplete();
 }
 
 int TypeText::utf8_strlen(const std::string& str)
@@ -338,12 +369,20 @@ void TypeText::GoPick(){
     DimLayer->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
     this->addChild(DimLayer, 8);
     
-//    this->result = this->texts[this->random_number]->getString();
-    this->result = this->texts[this->random_number]->getText();
-    
-    this->
-    
+    this->result = this->labels[this->random_number]->getString();
+    select_result = this->result;
+ 
     ShowFlippingScene();
+    
+    this->scheduleOnce(schedule_selector(TypeText::TransToPick),3.0f);
+}
+
+void TypeText::TransToPick(float dt){
+    std::string a = "선택은 ";
+    a += result;
+    MessageBox(a.c_str(), "선택 결과");
+//    auto nextscene = FinalScene::createScene();
+//    Director::getInstance()->replaceScene(TransitionFadeBL::create(1.0f, nextscene));
 }
 
 void TypeText::ShowFlippingScene(){

@@ -8,8 +8,8 @@ USING_NS_CC;
 // global variables
 // base frame number global
 int g_frameNumber = 2;
-
 int g_defaultcolor = 1;
+std::string select_result;
 
 std::vector<struct colorinfo> colorTable = {
     {Color3B(255,205,0),"#ffcd00","01select_2f_touch_1yellow.png","01select_4f_touch_1yellow.png","02input_ok_blackbg_selected_1yellow.png","02input_refresh_blackbg_touch_1yellow.png"},
