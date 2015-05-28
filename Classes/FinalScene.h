@@ -32,6 +32,7 @@ public:
     // top btns
     cocos2d::MenuItemImage* menuGotoFrameSelect;
     cocos2d::MenuItemImage* menuGotoSetting;
+    cocos2d::MenuItemImage* menuGotoBackbtn;
     
     // flipping dim layer
     cocos2d::LayerColor* DimLayer;
@@ -76,6 +77,9 @@ public:
     
     // go to colorpicker
     void goColorPicker(cocos2d::Ref* pSender);
+    
+    // go to type scene
+    void goTypeScene(cocos2d::Ref* pSender);
     
     CREATE_FUNC(FinalScene);
     

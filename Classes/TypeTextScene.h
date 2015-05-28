@@ -11,6 +11,7 @@
 
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
+#include "FinalScene.h"
 
 class TypeText : public cocos2d::Layer, public cocos2d::ui::EditBoxDelegate
 {

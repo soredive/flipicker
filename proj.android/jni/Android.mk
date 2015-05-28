@@ -15,7 +15,8 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/HelloWorldScene.cpp \
                    ../../Classes/FrameSelectScene.cpp \
 					../../Classes/TypeTextScene.cpp \
-					../../Classes/ColorPickerScene.cpp 
+					../../Classes/ColorPickerScene.cpp \
+					../../Classes/FinalScene.cpp 
 
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes

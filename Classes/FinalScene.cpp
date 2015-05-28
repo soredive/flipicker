@@ -54,6 +54,8 @@ bool FinalScene::init(){
                                                 path+"02input_selmenu_blackbg_touch.png",
                                                 CC_CALLBACK_1(FinalScene::goFrameSelect, this));
     menuGotoFrameSelect->setScale(r*menuscale);
+    menuGotoFrameSelect->setPosition(Vec2(padding * r,this->getBoundingBox().getMaxY()-padding * r));
+    menuGotoFrameSelect->setAnchorPoint(Vec2::ANCHOR_TOP_LEFT);
     
     menuGotoSetting = MenuItemImage::create(
                                             path+"02input_setting_blackbg_default.png",
@@ -61,13 +63,21 @@ bool FinalScene::init(){
                                             CC_CALLBACK_1(FinalScene::goColorPicker, this));
     menuGotoSetting->setScale(r*menuscale);
     
-    menuGotoFrameSelect->setPosition(Vec2(padding * r,this->getBoundingBox().getMaxY()-padding * r));
-    menuGotoFrameSelect->setAnchorPoint(Vec2::ANCHOR_TOP_LEFT);
+    
+    // backbtn
+    menuGotoBackbtn = MenuItemImage::create(
+                                    path+"04result_back_default.png",
+                                    path+"04result_back_touch.png",
+                                    CC_CALLBACK_1(FinalScene::goTypeScene, this));
+    menuGotoBackbtn->setScale(r*menuscale);
+    menuGotoBackbtn->setPosition(visibleSize.width/2,padding * r);
+    menuGotoBackbtn->setAnchorPoint(Vec2::ANCHOR_MIDDLE_BOTTOM);
+    
     
     menuGotoSetting->setPosition(Vec2(this->getBoundingBox().getMaxX()- padding * r,this->getBoundingBox().getMaxY()-padding * r));
     menuGotoSetting->setAnchorPoint(Vec2::ANCHOR_TOP_RIGHT);
     
-    auto menuTop = Menu::create(menuGotoFrameSelect,menuGotoSetting,NULL);
+    auto menuTop = Menu::create(menuGotoFrameSelect, menuGotoSetting, menuGotoBackbtn, NULL);
     menuTop->setPosition(Vec2::ZERO);
     this->addChild(menuTop,3);
     
@@ -88,6 +98,8 @@ bool FinalScene::init(){
         label->setPosition(visibleSize.width/2, visibleSize.height/2);
         label->setVisible(true);
         this->addChild(label);
+        
+        
     }
     
     return true;
@@ -143,6 +155,12 @@ int FinalScene::utf8_strlen(const std::string& str)
 
 void FinalScene::goColorPicker(Ref* pSender){
     auto s = ColorPicker::createScene();
+    
+    Director::getInstance()->replaceScene(TransitionFlipX::create(0.5, s));
+}
+
+void FinalScene::goTypeScene(cocos2d::Ref *pSender){
+    auto s = TypeText::createScene();
     
     Director::getInstance()->replaceScene(TransitionFlipX::create(0.5, s));
 }
