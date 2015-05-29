@@ -1,0 +1,77 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.0.0'
+ 
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+ 
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+ 
+apply plugin: 'com.android.application'
+ 
+dependencies {
+    compile fileTree(dir: 'libs', include: '*.jar')
+    compile "com.android.support:support-v4:21.0.3"
+    compile 'com.google.android.gms:play-services:6.5.87'
+}
+ 
+android {
+    compileSdkVersion 21
+    buildToolsVersion "20.0.0"
+ 
+    defaultConfig {
+        applicationId "com.package.name"
+        minSdkVersion 15
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0"
+    }
+ 
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['../cocos2d/cocos/platform/android/java/src', 'src'] // we have to include java part of cocos2d-x and our src
+            resources.srcDirs = ['src']
+            aidl.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+            res.srcDirs = ['res'] // standard android resources
+            assets.srcDirs = ['../Resources'] // add all game resources to asset folder.
+            jni.srcDirs = [] //disable automatic ndk-build call
+            jniLibs.srcDir 'libs'
+        }
+ 
+        instrumentTest.setRoot('tests')
+ 
+        debug.setRoot('build-types/debug')
+        release.setRoot('build-types/release')
+    }
+ 
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+ 
+        debug {
+            signingConfig signingConfigs.debug
+        }
+ 
+    }
+ 
+    task ndkBuild(type: Exec) {
+        commandLine ANDROID_NDK_HOME + "/ndk-build", '-j4', 'NDK_DEBUG=1', '-C', file('jni').absolutePath
+    }
+ 
+    tasks.withType(JavaCompile) {
+        compileTask -> compileTask.dependsOn ndkBuild
+    }
+}
