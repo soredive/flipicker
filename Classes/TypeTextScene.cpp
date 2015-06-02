@@ -14,6 +14,10 @@
 
 #include "ui/CocosGUI.h"
 
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+#include "platform/android/jni/JniBridge.h"
+#endif
+
 #define COCOS2D_DEBUG 1
 
 USING_NS_CC;
@@ -47,6 +51,9 @@ bool TypeText::init(){
         }
         
         PlaceholderColor = Color3B(0x33,0x33,0x33);
+        
+        IsWaiting = false;
+        RefTypeText = dynamic_cast<TypeText *>(this);
    }
     
     // size factor
@@ -374,7 +381,14 @@ void TypeText::GoPick(){
  
     ShowFlippingScene();
     
-    this->scheduleOnce(schedule_selector(TypeText::TransToPick),3.0f);
+    IsWaiting = true;
+    
+    // call gyro sensor ready here
+    #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+        CallToJavaStartSensor();
+    #else
+        this->scheduleOnce(schedule_selector(TypeText::TransToPick),3.0f);
+    #endif
 }
 
 void TypeText::TransToPick(float dt){

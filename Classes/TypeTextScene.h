@@ -16,6 +16,10 @@
 class TypeText : public cocos2d::Layer, public cocos2d::ui::EditBoxDelegate
 {
 public:
+    // to save this instance (used in JNI or java)
+    static TypeText * RefTypeText;
+    bool IsWaiting;
+    
     static cocos2d::Scene* createScene();
     
     // screen position
