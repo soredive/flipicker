@@ -48,12 +48,23 @@ public class AppActivity extends Cocos2dxActivity implements SensorEventListener
 
     // gyro sensor things
     private SensorManager sensorManager = null;
-    private Sensor orientationSensor = null;
-    private Sensor accelermeterSensor = null;
+    private Sensor gyroSensor = null;
+    private Sensor rotationVectorSensor = null;
     // gyro sensor things
+
+
+    //////////////// gyro sensor things ////////////////
+    // was sensor on
+    private boolean is_sensor_on;
 
     // check is fliped
     private boolean is_phone_flipped;
+
+    // first state when start flipping
+    private float[] first_saving = new float[3];
+    private float[] first_saving_min = new float[3];
+    private float[] first_saving_max = new float[3];
+    private boolean is_first_check;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,35 +73,65 @@ public class AppActivity extends Cocos2dxActivity implements SensorEventListener
         //Save activity instance
         _activiy = this;
         cocos_activity = this;
+        is_first_check = true;
+        //
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
-        accelermeterSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        orientationSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION);
-        // DEPRECATED
+        rotationVectorSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR);
+        gyroSensor = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
         //SensorManager.getOrientation();
     }
 
     @Override
     protected void onStart(){
         super.onStart();
-
-        startFlipSensor();
-
-        // test
-        callNativeCPPCall();
-        //test
     }
 
     @Override
     public void onSensorChanged(SensorEvent event){
         synchronized (this){
-            Log.d("Sensor", "onSensorChanged: " + event.sensor.getType()
-                    + ", x: " + event.values[0] + ", y: " + event.values[1] + ", z: " + event.values[2]);
-            if(event.sensor.getType() == Sensor.TYPE_ACCELEROMETER){
-                Log.d("Accel x: ", " "+event.values[0] + ", y: " + event.values[1] + ", z: " + event.values[2]);
-            }else if(event.sensor.getType() == Sensor.TYPE_ORIENTATION){
-                Log.d("Orientation x: ", " "+event.values[0] + ", y: " + event.values[1] + ", z: " + event.values[2]);
+//            Log.d("Sensor", "onSensorChanged: " + event.sensor.getType() + ", x: " + event.values[0] + ", y: " + event.values[1] + ", z: " + event.values[2]);
+//            if(event.sensor.getType() == Sensor.TYPE_GYROSCOPE){
+//                Log.d("Gyro x: ", " "+event.values[0] + ", y: " + event.values[1] + ", z: " + event.values[2]);
+//            }else
+            if(event.sensor.getType() == Sensor.TYPE_ROTATION_VECTOR){
+                if(is_first_check){
+                    is_first_check = false;
+
+                    float no1, no2, max, min;
+                    for(int i = 0; i < 3; i++){
+                        first_saving[i] = event.values[i];
+                        no1 = first_saving[i] - 0.5f;
+                        no2 = first_saving[i] + 0.5f;
+                        if(no1>=1) no1 -= 1;
+                        if(no1<=-1) no1 += 1;
+                        if(no2>=1) no2 -= 1;
+                        if(no2<=-1) no2 += 1;
+
+                        if(no1>no2){
+                            max = no1;
+                            min = no2;
+                        }else{
+                            max = no2;
+                            min = no1;
+                        }
+                        first_saving_max[i] = max;
+                        first_saving_min[i] = min;
+                    }
+                }else{
+                    boolean ok = false;
+                    for(int i = 0; i < 2; i++){
+                        if(event.values[i] <= first_saving_min[i] || event.values[i] >= first_saving_max[i]){
+                            ok = true;
+                        }
+                    }
+                    if(ok == true){
+                        // ok flipped
+                        callNativeCPPCall();
+                    }
+                }
+                Log.d("Rotation x: ", " "+event.values[0] + ", y: " + event.values[1] + ", z: " + event.values[2]);
                 /**
                  * float headingAngle = values[0];
                  float pitchAngle = values[1];
@@ -119,57 +160,48 @@ public class AppActivity extends Cocos2dxActivity implements SensorEventListener
         super.onDestroy();
     }
 
-    public void startFlipSensor(){
-        is_phone_flipped = false;
 
+
+    // called from cpp to android to start sensor
+    public static void calledByCppStartSensor(){
+        cocos_activity.startFlipSensor();
+    }
+    public void startFlipSensor(){
+        is_sensor_on = true;
+        is_phone_flipped = false;
         // init sensor
-        if(accelermeterSensor != null){
-            sensorManager.registerListener(this, accelermeterSensor, SensorManager.SENSOR_DELAY_NORMAL);
+        if(gyroSensor != null){
+            sensorManager.registerListener(this, gyroSensor, SensorManager.SENSOR_DELAY_NORMAL);
         }
-        if(orientationSensor != null){
-            sensorManager.registerListener(this, orientationSensor, SensorManager.SENSOR_DELAY_NORMAL);
+        if(rotationVectorSensor != null){
+            sensorManager.registerListener(this, rotationVectorSensor, SensorManager.SENSOR_DELAY_NORMAL);
         }
     }
 
+
+
+
+    // called from cpp to Android to stop sensor
+    public static void calledByCppStopSensor(){
+        cocos_activity.endFlipSensor();
+    }
     public void endFlipSensor(){
-        if(accelermeterSensor != null || orientationSensor != null){
+        if(gyroSensor != null || rotationVectorSensor != null){
             sensorManager.unregisterListener(this);
         }
     }
 
-    public static void calledByCppStartSensor(){
-        cocos_activity.startFlipSensor();
 
-        Log.d("*******************", "start sensor");
-        Log.d("*******************", "start sensor");
-        Log.d("*******************", "start sensor");
-        Log.d("*******************", "start sensor");
-        Log.d("*******************", "start sensor");
-        Log.d("*******************", "start sensor");
-        Log.d("*******************", "start sensor");
-        Log.d("*******************", "start sensor");
-        Log.d("*******************", "start sensor");
-        Log.d("*******************", "start sensor");
-        Log.d("*******************", "start sensor");
-        Log.d("*******************", "start sensor");
-        Log.d("*******************", "start sensor");
-        Log.d("*******************", "start sensor");
-        Log.d("*******************", "start sensor");
-        Log.d("*******************", "start sensor");
-        Log.d("*******************", "start sensor");
-    }
 
-    public static void calledByCppStopSensor(){
-        cocos_activity.endFlipSensor();
-    }
 
+    // call cpp from Android to go flip end scene!
     public void callNativeCPPCall(){
-        String a = "Yes, It's pure Java!";
-
         callNativeFlipEvent();
+        endFlipSensor();
     }
-
     public static native void callNativeFlipEvent();
+
+
 
 
     public static void alertJNI() {

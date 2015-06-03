@@ -16,11 +16,12 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/FrameSelectScene.cpp \
 					../../Classes/TypeTextScene.cpp \
 					../../Classes/ColorPickerScene.cpp \
-					../../Classes/FinalScene.cpp 
-				
+					../../Classes/FinalScene.cpp \
+					../../cocos2d/cocos/platform/android/jni/JniBridge.cpp				
 
 
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes \
+			../../cocos2d/cocos/platform/android/jni
 
 # _COCOS_HEADER_ANDROID_BEGIN
 # _COCOS_HEADER_ANDROID_END

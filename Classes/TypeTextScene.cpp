@@ -27,6 +27,8 @@ extern int g_defaultcolor;
 extern std::vector<struct colorinfo> colorTable;
 extern std::string select_result;
 
+TypeText *TypeText::RefTypeText;
+
 Scene* TypeText::createScene(){
     auto s = Scene::create();
     
@@ -53,7 +55,7 @@ bool TypeText::init(){
         PlaceholderColor = Color3B(0x33,0x33,0x33);
         
         IsWaiting = false;
-        RefTypeText = dynamic_cast<TypeText *>(this);
+        RefTypeText = this;
    }
     
     // size factor

@@ -27,10 +27,15 @@
 using namespace cocos2d;
 
 extern "C" {
+    
+    
+    
+    
+    
+    /////////////////////// FROM ANDROID TO CPP /////////////////////////////
     // functions which is called from adnroid placed in here.
+    // function name is pakage name , classs name , method name
     void Java_org_cocos2dx_cpp_AppActivity_callNativeFlipEvent(){
-        MessageBox("call from java", "this is called from android");
-        
         auto ins = TypeText::RefTypeText;
         ins->TransToPick(1);
     }
@@ -38,6 +43,8 @@ extern "C" {
     
     
     
+    
+    /////////////////////// FROM CPP TO ANDROID /////////////////////////////
     // functions which is call android method in here.
     void CallToJavaStartSensor(){
         JniMethodInfo t;
