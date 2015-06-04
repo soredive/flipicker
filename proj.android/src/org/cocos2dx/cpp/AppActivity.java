@@ -64,6 +64,8 @@ public class AppActivity extends Cocos2dxActivity implements SensorEventListener
     private float[] first_saving = new float[3];
     private float[] first_saving_min = new float[3];
     private float[] first_saving_max = new float[3];
+    private float[] last_saving_min = new float[3];
+    private float[] last_saving_max = new float[3];
     private boolean is_first_check;
 
     @Override
@@ -74,6 +76,7 @@ public class AppActivity extends Cocos2dxActivity implements SensorEventListener
         _activiy = this;
         cocos_activity = this;
         is_first_check = true;
+        is_phone_flipped = false;
         //
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -118,25 +121,54 @@ public class AppActivity extends Cocos2dxActivity implements SensorEventListener
                         }
                         first_saving_max[i] = max;
                         first_saving_min[i] = min;
-                    }
+                        //
+                        no1 = first_saving[i] - 0.2f;
+                        no2 = first_saving[i] + 0.2f;
+                        if(no1>=1) no1 -= 1;
+                        if(no1<=-1) no1 += 1;
+                        if(no2>=1) no2 -= 1;
+                        if(no2<=-1) no2 += 1;
+
+                        if(no1>no2){
+                            max = no1;
+                            min = no2;
+                        }else{
+                            max = no2;
+                            min = no1;
+                        }
+                        last_saving_max[i] = max;
+                        last_saving_min[i] = min;
+                     }
                 }else{
-                    boolean ok = false;
-                    for(int i = 0; i < 2; i++){
-                        if(event.values[i] <= first_saving_min[i] || event.values[i] >= first_saving_max[i]){
-                            ok = true;
+                    if(is_phone_flipped == false){
+                        boolean ok = false;
+                        for(int i = 0; i < 2; i++){
+                            if(event.values[i] <= first_saving_min[i] || event.values[i] >= first_saving_max[i]){
+                                ok = true;
+                            }
+                        }
+                        if(ok == true){
+                            // ok flipped
+                            is_phone_flipped = true;
+                            Log.d("FLIPPED !!!!!!!","FLIPPED !!!!!!!");
+                        }
+                    }else{
+                        boolean ok = false;
+                        for(int i = 0; i < 2; i++){
+                            if(event.values[i] >= first_saving_min[i] && event.values[i] <= first_saving_max[i]){
+                                ok = true;
+                            }
+                        }
+                        if(ok == true){
+                            // ok flipped
+                            Log.d("Backed !!!!!!!","Backed !!!!!!!");
+                            endFlipSensor();
+                            callNativeCPPCall();
+
                         }
                     }
-                    if(ok == true){
-                        // ok flipped
-                        callNativeCPPCall();
-                    }
+
                 }
-                Log.d("Rotation x: ", " "+event.values[0] + ", y: " + event.values[1] + ", z: " + event.values[2]);
-                /**
-                 * float headingAngle = values[0];
-                 float pitchAngle = values[1];
-                 float rollAngle = values[2];
-                 */
             }
         }
     }
@@ -197,7 +229,6 @@ public class AppActivity extends Cocos2dxActivity implements SensorEventListener
     // call cpp from Android to go flip end scene!
     public void callNativeCPPCall(){
         callNativeFlipEvent();
-        endFlipSensor();
     }
     public static native void callNativeFlipEvent();
 

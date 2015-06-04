@@ -48,7 +48,11 @@ bool FinalScene::init(){
         path = "res/retina/";
         menuscale = menuscale / 2;
     }
+    
+    auto logmsg = std::string("final scene inited!!! ")+" "+path+"04result_back_default.png";
+    log("okokokokok %s",logmsg.c_str());
    
+    //frame select
     menuGotoFrameSelect = MenuItemImage::create(
                                                 path+"02input_selmenu_blackbg_default.png",
                                                 path+"02input_selmenu_blackbg_touch.png",
@@ -57,11 +61,14 @@ bool FinalScene::init(){
     menuGotoFrameSelect->setPosition(Vec2(padding * r,this->getBoundingBox().getMaxY()-padding * r));
     menuGotoFrameSelect->setAnchorPoint(Vec2::ANCHOR_TOP_LEFT);
     
+    //color select
     menuGotoSetting = MenuItemImage::create(
                                             path+"02input_setting_blackbg_default.png",
                                             path+"02input_setting_blackbg_touch.png",
                                             CC_CALLBACK_1(FinalScene::goColorPicker, this));
     menuGotoSetting->setScale(r*menuscale);
+    menuGotoSetting->setPosition(Vec2(this->getBoundingBox().getMaxX()- padding * r,this->getBoundingBox().getMaxY()-padding * r));
+    menuGotoSetting->setAnchorPoint(Vec2::ANCHOR_TOP_RIGHT);
     
     
     // backbtn
@@ -70,12 +77,10 @@ bool FinalScene::init(){
                                     path+"04result_back_touch.png",
                                     CC_CALLBACK_1(FinalScene::goTypeScene, this));
     menuGotoBackbtn->setScale(r*menuscale);
-    menuGotoBackbtn->setPosition(visibleSize.width/2,padding * r);
+    menuGotoBackbtn->setPosition(Vec2(visibleSize.width/2,padding * r));
     menuGotoBackbtn->setAnchorPoint(Vec2::ANCHOR_MIDDLE_BOTTOM);
     
     
-    menuGotoSetting->setPosition(Vec2(this->getBoundingBox().getMaxX()- padding * r,this->getBoundingBox().getMaxY()-padding * r));
-    menuGotoSetting->setAnchorPoint(Vec2::ANCHOR_TOP_RIGHT);
     
     auto menuTop = Menu::create(menuGotoFrameSelect, menuGotoSetting, menuGotoBackbtn, NULL);
     menuTop->setPosition(Vec2::ZERO);
@@ -88,7 +93,8 @@ bool FinalScene::init(){
         auto fontsize = (int)(GetFontSize(len) * r);
         
         auto SizeLabel = Size(visibleSize.width * 0.8, visibleSize.height * 0.8);
-        auto label = Label::createWithTTF(str.c_str(), "fonts/GROTESKIA.otf", fontsize, SizeLabel);
+//        auto label = Label::createWithTTF(str.c_str(), "fonts/GROTESKIA.otf", fontsize, SizeLabel);
+        auto label = Label::createWithTTF(str.c_str(), "fonts/NanumGothic_Coding.ttf", fontsize, SizeLabel);
         
 //        label->setColor(colorTable[g_defaultcolor].color);
         label->setColor(Color3B::BLACK);

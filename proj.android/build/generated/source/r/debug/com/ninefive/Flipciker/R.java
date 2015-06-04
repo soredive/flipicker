@@ -488,9 +488,9 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #AdsAttrs_adSize com.package.name:adSize}</code></td><td></td></tr>
-           <tr><td><code>{@link #AdsAttrs_adSizes com.package.name:adSizes}</code></td><td></td></tr>
-           <tr><td><code>{@link #AdsAttrs_adUnitId com.package.name:adUnitId}</code></td><td></td></tr>
+           <tr><td><code>{@link #AdsAttrs_adSize com.ninefive.flipicker:adSize}</code></td><td></td></tr>
+           <tr><td><code>{@link #AdsAttrs_adSizes com.ninefive.flipicker:adSizes}</code></td><td></td></tr>
+           <tr><td><code>{@link #AdsAttrs_adUnitId com.ninefive.flipicker:adUnitId}</code></td><td></td></tr>
            </table>
            @see #AdsAttrs_adSize
            @see #AdsAttrs_adSizes
@@ -500,7 +500,7 @@ containing a value of this type.
             0x7f010000, 0x7f010001, 0x7f010002
         };
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#adSize}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#adSize}
           attribute's value can be found in the {@link #AdsAttrs} array.
 
 
@@ -510,11 +510,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.package.name:adSize
+          @attr name com.ninefive.flipicker:adSize
         */
         public static final int AdsAttrs_adSize = 0;
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#adSizes}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#adSizes}
           attribute's value can be found in the {@link #AdsAttrs} array.
 
 
@@ -524,11 +524,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.package.name:adSizes
+          @attr name com.ninefive.flipicker:adSizes
         */
         public static final int AdsAttrs_adSizes = 1;
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#adUnitId}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#adUnitId}
           attribute's value can be found in the {@link #AdsAttrs} array.
 
 
@@ -538,7 +538,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.package.name:adUnitId
+          @attr name com.ninefive.flipicker:adUnitId
         */
         public static final int AdsAttrs_adUnitId = 2;
         /** Attributes that can be used with a LoadingImageView.
@@ -547,9 +547,9 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #LoadingImageView_circleCrop com.package.name:circleCrop}</code></td><td></td></tr>
-           <tr><td><code>{@link #LoadingImageView_imageAspectRatio com.package.name:imageAspectRatio}</code></td><td></td></tr>
-           <tr><td><code>{@link #LoadingImageView_imageAspectRatioAdjust com.package.name:imageAspectRatioAdjust}</code></td><td></td></tr>
+           <tr><td><code>{@link #LoadingImageView_circleCrop com.ninefive.flipicker:circleCrop}</code></td><td></td></tr>
+           <tr><td><code>{@link #LoadingImageView_imageAspectRatio com.ninefive.flipicker:imageAspectRatio}</code></td><td></td></tr>
+           <tr><td><code>{@link #LoadingImageView_imageAspectRatioAdjust com.ninefive.flipicker:imageAspectRatioAdjust}</code></td><td></td></tr>
            </table>
            @see #LoadingImageView_circleCrop
            @see #LoadingImageView_imageAspectRatio
@@ -559,7 +559,7 @@ containing a value of this type.
             0x7f010003, 0x7f010004, 0x7f010005
         };
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#circleCrop}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#circleCrop}
           attribute's value can be found in the {@link #LoadingImageView} array.
 
 
@@ -569,11 +569,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.package.name:circleCrop
+          @attr name com.ninefive.flipicker:circleCrop
         */
         public static final int LoadingImageView_circleCrop = 2;
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#imageAspectRatio}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#imageAspectRatio}
           attribute's value can be found in the {@link #LoadingImageView} array.
 
 
@@ -583,11 +583,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.package.name:imageAspectRatio
+          @attr name com.ninefive.flipicker:imageAspectRatio
         */
         public static final int LoadingImageView_imageAspectRatio = 1;
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#imageAspectRatioAdjust}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#imageAspectRatioAdjust}
           attribute's value can be found in the {@link #LoadingImageView} array.
 
 
@@ -601,7 +601,7 @@ containing a value of this type.
 <tr><td><code>adjust_width</code></td><td>1</td><td></td></tr>
 <tr><td><code>adjust_height</code></td><td>2</td><td></td></tr>
 </table>
-          @attr name com.package.name:imageAspectRatioAdjust
+          @attr name com.ninefive.flipicker:imageAspectRatioAdjust
         */
         public static final int LoadingImageView_imageAspectRatioAdjust = 0;
         /** Attributes that can be used with a MapAttrs.
@@ -610,22 +610,22 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #MapAttrs_cameraBearing com.package.name:cameraBearing}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_cameraTargetLat com.package.name:cameraTargetLat}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_cameraTargetLng com.package.name:cameraTargetLng}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_cameraTilt com.package.name:cameraTilt}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_cameraZoom com.package.name:cameraZoom}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_liteMode com.package.name:liteMode}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_mapType com.package.name:mapType}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiCompass com.package.name:uiCompass}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiMapToolbar com.package.name:uiMapToolbar}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiRotateGestures com.package.name:uiRotateGestures}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiScrollGestures com.package.name:uiScrollGestures}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiTiltGestures com.package.name:uiTiltGestures}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiZoomControls com.package.name:uiZoomControls}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiZoomGestures com.package.name:uiZoomGestures}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_useViewLifecycle com.package.name:useViewLifecycle}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_zOrderOnTop com.package.name:zOrderOnTop}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraBearing com.ninefive.flipicker:cameraBearing}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraTargetLat com.ninefive.flipicker:cameraTargetLat}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraTargetLng com.ninefive.flipicker:cameraTargetLng}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraTilt com.ninefive.flipicker:cameraTilt}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraZoom com.ninefive.flipicker:cameraZoom}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_liteMode com.ninefive.flipicker:liteMode}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_mapType com.ninefive.flipicker:mapType}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiCompass com.ninefive.flipicker:uiCompass}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiMapToolbar com.ninefive.flipicker:uiMapToolbar}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiRotateGestures com.ninefive.flipicker:uiRotateGestures}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiScrollGestures com.ninefive.flipicker:uiScrollGestures}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiTiltGestures com.ninefive.flipicker:uiTiltGestures}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiZoomControls com.ninefive.flipicker:uiZoomControls}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiZoomGestures com.ninefive.flipicker:uiZoomGestures}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_useViewLifecycle com.ninefive.flipicker:useViewLifecycle}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_zOrderOnTop com.ninefive.flipicker:zOrderOnTop}</code></td><td></td></tr>
            </table>
            @see #MapAttrs_cameraBearing
            @see #MapAttrs_cameraTargetLat
@@ -651,7 +651,7 @@ containing a value of this type.
             0x7f010012, 0x7f010013, 0x7f010014, 0x7f010015
         };
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#cameraBearing}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#cameraBearing}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -661,11 +661,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.package.name:cameraBearing
+          @attr name com.ninefive.flipicker:cameraBearing
         */
         public static final int MapAttrs_cameraBearing = 1;
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#cameraTargetLat}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#cameraTargetLat}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -675,11 +675,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.package.name:cameraTargetLat
+          @attr name com.ninefive.flipicker:cameraTargetLat
         */
         public static final int MapAttrs_cameraTargetLat = 2;
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#cameraTargetLng}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#cameraTargetLng}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -689,11 +689,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.package.name:cameraTargetLng
+          @attr name com.ninefive.flipicker:cameraTargetLng
         */
         public static final int MapAttrs_cameraTargetLng = 3;
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#cameraTilt}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#cameraTilt}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -703,11 +703,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.package.name:cameraTilt
+          @attr name com.ninefive.flipicker:cameraTilt
         */
         public static final int MapAttrs_cameraTilt = 4;
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#cameraZoom}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#cameraZoom}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -717,11 +717,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.package.name:cameraZoom
+          @attr name com.ninefive.flipicker:cameraZoom
         */
         public static final int MapAttrs_cameraZoom = 5;
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#liteMode}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#liteMode}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -731,11 +731,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.package.name:liteMode
+          @attr name com.ninefive.flipicker:liteMode
         */
         public static final int MapAttrs_liteMode = 6;
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#mapType}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#mapType}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -751,11 +751,11 @@ containing a value of this type.
 <tr><td><code>terrain</code></td><td>3</td><td></td></tr>
 <tr><td><code>hybrid</code></td><td>4</td><td></td></tr>
 </table>
-          @attr name com.package.name:mapType
+          @attr name com.ninefive.flipicker:mapType
         */
         public static final int MapAttrs_mapType = 0;
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#uiCompass}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#uiCompass}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -765,11 +765,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.package.name:uiCompass
+          @attr name com.ninefive.flipicker:uiCompass
         */
         public static final int MapAttrs_uiCompass = 7;
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#uiMapToolbar}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#uiMapToolbar}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -779,11 +779,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.package.name:uiMapToolbar
+          @attr name com.ninefive.flipicker:uiMapToolbar
         */
         public static final int MapAttrs_uiMapToolbar = 15;
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#uiRotateGestures}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#uiRotateGestures}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -793,11 +793,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.package.name:uiRotateGestures
+          @attr name com.ninefive.flipicker:uiRotateGestures
         */
         public static final int MapAttrs_uiRotateGestures = 8;
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#uiScrollGestures}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#uiScrollGestures}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -807,11 +807,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.package.name:uiScrollGestures
+          @attr name com.ninefive.flipicker:uiScrollGestures
         */
         public static final int MapAttrs_uiScrollGestures = 9;
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#uiTiltGestures}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#uiTiltGestures}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -821,11 +821,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.package.name:uiTiltGestures
+          @attr name com.ninefive.flipicker:uiTiltGestures
         */
         public static final int MapAttrs_uiTiltGestures = 10;
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#uiZoomControls}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#uiZoomControls}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -835,11 +835,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.package.name:uiZoomControls
+          @attr name com.ninefive.flipicker:uiZoomControls
         */
         public static final int MapAttrs_uiZoomControls = 11;
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#uiZoomGestures}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#uiZoomGestures}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -849,11 +849,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.package.name:uiZoomGestures
+          @attr name com.ninefive.flipicker:uiZoomGestures
         */
         public static final int MapAttrs_uiZoomGestures = 12;
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#useViewLifecycle}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#useViewLifecycle}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -863,11 +863,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.package.name:useViewLifecycle
+          @attr name com.ninefive.flipicker:useViewLifecycle
         */
         public static final int MapAttrs_useViewLifecycle = 13;
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#zOrderOnTop}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#zOrderOnTop}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -877,7 +877,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.package.name:zOrderOnTop
+          @attr name com.ninefive.flipicker:zOrderOnTop
         */
         public static final int MapAttrs_zOrderOnTop = 14;
         /** Attributes that can be used with a WalletFragmentOptions.
@@ -886,10 +886,10 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #WalletFragmentOptions_appTheme com.package.name:appTheme}</code></td><td></td></tr>
-           <tr><td><code>{@link #WalletFragmentOptions_environment com.package.name:environment}</code></td><td></td></tr>
-           <tr><td><code>{@link #WalletFragmentOptions_fragmentMode com.package.name:fragmentMode}</code></td><td></td></tr>
-           <tr><td><code>{@link #WalletFragmentOptions_fragmentStyle com.package.name:fragmentStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #WalletFragmentOptions_appTheme com.ninefive.flipicker:appTheme}</code></td><td></td></tr>
+           <tr><td><code>{@link #WalletFragmentOptions_environment com.ninefive.flipicker:environment}</code></td><td></td></tr>
+           <tr><td><code>{@link #WalletFragmentOptions_fragmentMode com.ninefive.flipicker:fragmentMode}</code></td><td></td></tr>
+           <tr><td><code>{@link #WalletFragmentOptions_fragmentStyle com.ninefive.flipicker:fragmentStyle}</code></td><td></td></tr>
            </table>
            @see #WalletFragmentOptions_appTheme
            @see #WalletFragmentOptions_environment
@@ -900,7 +900,7 @@ containing a value of this type.
             0x7f010016, 0x7f010017, 0x7f010018, 0x7f010019
         };
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#appTheme}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#appTheme}
           attribute's value can be found in the {@link #WalletFragmentOptions} array.
 
 
@@ -913,11 +913,11 @@ containing a value of this type.
 <tr><td><code>holo_dark</code></td><td>0</td><td></td></tr>
 <tr><td><code>holo_light</code></td><td>1</td><td></td></tr>
 </table>
-          @attr name com.package.name:appTheme
+          @attr name com.ninefive.flipicker:appTheme
         */
         public static final int WalletFragmentOptions_appTheme = 0;
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#environment}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#environment}
           attribute's value can be found in the {@link #WalletFragmentOptions} array.
 
 
@@ -931,11 +931,11 @@ containing a value of this type.
 <tr><td><code>sandbox</code></td><td>0</td><td></td></tr>
 <tr><td><code>strict_sandbox</code></td><td>2</td><td></td></tr>
 </table>
-          @attr name com.package.name:environment
+          @attr name com.ninefive.flipicker:environment
         */
         public static final int WalletFragmentOptions_environment = 1;
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#fragmentMode}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#fragmentMode}
           attribute's value can be found in the {@link #WalletFragmentOptions} array.
 
 
@@ -948,17 +948,17 @@ containing a value of this type.
 <tr><td><code>buyButton</code></td><td>1</td><td></td></tr>
 <tr><td><code>selectionDetails</code></td><td>2</td><td></td></tr>
 </table>
-          @attr name com.package.name:fragmentMode
+          @attr name com.ninefive.flipicker:fragmentMode
         */
         public static final int WalletFragmentOptions_fragmentMode = 3;
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#fragmentStyle}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#fragmentStyle}
           attribute's value can be found in the {@link #WalletFragmentOptions} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name com.package.name:fragmentStyle
+          @attr name com.ninefive.flipicker:fragmentStyle
         */
         public static final int WalletFragmentOptions_fragmentStyle = 2;
         /** Attributes that can be used with a WalletFragmentStyle.
@@ -967,17 +967,17 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #WalletFragmentStyle_buyButtonAppearance com.package.name:buyButtonAppearance}</code></td><td></td></tr>
-           <tr><td><code>{@link #WalletFragmentStyle_buyButtonHeight com.package.name:buyButtonHeight}</code></td><td></td></tr>
-           <tr><td><code>{@link #WalletFragmentStyle_buyButtonText com.package.name:buyButtonText}</code></td><td></td></tr>
-           <tr><td><code>{@link #WalletFragmentStyle_buyButtonWidth com.package.name:buyButtonWidth}</code></td><td></td></tr>
-           <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsBackground com.package.name:maskedWalletDetailsBackground}</code></td><td></td></tr>
-           <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsButtonBackground com.package.name:maskedWalletDetailsButtonBackground}</code></td><td></td></tr>
-           <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsButtonTextAppearance com.package.name:maskedWalletDetailsButtonTextAppearance}</code></td><td></td></tr>
-           <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsHeaderTextAppearance com.package.name:maskedWalletDetailsHeaderTextAppearance}</code></td><td></td></tr>
-           <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsLogoImageType com.package.name:maskedWalletDetailsLogoImageType}</code></td><td></td></tr>
-           <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsLogoTextColor com.package.name:maskedWalletDetailsLogoTextColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsTextAppearance com.package.name:maskedWalletDetailsTextAppearance}</code></td><td></td></tr>
+           <tr><td><code>{@link #WalletFragmentStyle_buyButtonAppearance com.ninefive.flipicker:buyButtonAppearance}</code></td><td></td></tr>
+           <tr><td><code>{@link #WalletFragmentStyle_buyButtonHeight com.ninefive.flipicker:buyButtonHeight}</code></td><td></td></tr>
+           <tr><td><code>{@link #WalletFragmentStyle_buyButtonText com.ninefive.flipicker:buyButtonText}</code></td><td></td></tr>
+           <tr><td><code>{@link #WalletFragmentStyle_buyButtonWidth com.ninefive.flipicker:buyButtonWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsBackground com.ninefive.flipicker:maskedWalletDetailsBackground}</code></td><td></td></tr>
+           <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsButtonBackground com.ninefive.flipicker:maskedWalletDetailsButtonBackground}</code></td><td></td></tr>
+           <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsButtonTextAppearance com.ninefive.flipicker:maskedWalletDetailsButtonTextAppearance}</code></td><td></td></tr>
+           <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsHeaderTextAppearance com.ninefive.flipicker:maskedWalletDetailsHeaderTextAppearance}</code></td><td></td></tr>
+           <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsLogoImageType com.ninefive.flipicker:maskedWalletDetailsLogoImageType}</code></td><td></td></tr>
+           <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsLogoTextColor com.ninefive.flipicker:maskedWalletDetailsLogoTextColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsTextAppearance com.ninefive.flipicker:maskedWalletDetailsTextAppearance}</code></td><td></td></tr>
            </table>
            @see #WalletFragmentStyle_buyButtonAppearance
            @see #WalletFragmentStyle_buyButtonHeight
@@ -997,7 +997,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
             0x7f010022, 0x7f010023, 0x7f010024
         };
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#buyButtonAppearance}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#buyButtonAppearance}
           attribute's value can be found in the {@link #WalletFragmentStyle} array.
 
 
@@ -1011,11 +1011,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <tr><td><code>grayscale</code></td><td>2</td><td></td></tr>
 <tr><td><code>monochrome</code></td><td>3</td><td></td></tr>
 </table>
-          @attr name com.package.name:buyButtonAppearance
+          @attr name com.ninefive.flipicker:buyButtonAppearance
         */
         public static final int WalletFragmentStyle_buyButtonAppearance = 3;
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#buyButtonHeight}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#buyButtonHeight}
           attribute's value can be found in the {@link #WalletFragmentStyle} array.
 
 
@@ -1036,11 +1036,11 @@ containing a value of this type.
 <tr><td><code>match_parent</code></td><td>-1</td><td></td></tr>
 <tr><td><code>wrap_content</code></td><td>-2</td><td></td></tr>
 </table>
-          @attr name com.package.name:buyButtonHeight
+          @attr name com.ninefive.flipicker:buyButtonHeight
         */
         public static final int WalletFragmentStyle_buyButtonHeight = 0;
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#buyButtonText}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#buyButtonText}
           attribute's value can be found in the {@link #WalletFragmentStyle} array.
 
 
@@ -1055,11 +1055,11 @@ containing a value of this type.
 <tr><td><code>book_now</code></td><td>3</td><td></td></tr>
 <tr><td><code>donate_with_google</code></td><td>4</td><td></td></tr>
 </table>
-          @attr name com.package.name:buyButtonText
+          @attr name com.ninefive.flipicker:buyButtonText
         */
         public static final int WalletFragmentStyle_buyButtonText = 2;
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#buyButtonWidth}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#buyButtonWidth}
           attribute's value can be found in the {@link #WalletFragmentStyle} array.
 
 
@@ -1080,11 +1080,11 @@ containing a value of this type.
 <tr><td><code>match_parent</code></td><td>-1</td><td></td></tr>
 <tr><td><code>wrap_content</code></td><td>-2</td><td></td></tr>
 </table>
-          @attr name com.package.name:buyButtonWidth
+          @attr name com.ninefive.flipicker:buyButtonWidth
         */
         public static final int WalletFragmentStyle_buyButtonWidth = 1;
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#maskedWalletDetailsBackground}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#maskedWalletDetailsBackground}
           attribute's value can be found in the {@link #WalletFragmentStyle} array.
 
 
@@ -1092,11 +1092,11 @@ containing a value of this type.
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-          @attr name com.package.name:maskedWalletDetailsBackground
+          @attr name com.ninefive.flipicker:maskedWalletDetailsBackground
         */
         public static final int WalletFragmentStyle_maskedWalletDetailsBackground = 6;
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#maskedWalletDetailsButtonBackground}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#maskedWalletDetailsButtonBackground}
           attribute's value can be found in the {@link #WalletFragmentStyle} array.
 
 
@@ -1104,31 +1104,31 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-          @attr name com.package.name:maskedWalletDetailsButtonBackground
+          @attr name com.ninefive.flipicker:maskedWalletDetailsButtonBackground
         */
         public static final int WalletFragmentStyle_maskedWalletDetailsButtonBackground = 8;
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#maskedWalletDetailsButtonTextAppearance}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#maskedWalletDetailsButtonTextAppearance}
           attribute's value can be found in the {@link #WalletFragmentStyle} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name com.package.name:maskedWalletDetailsButtonTextAppearance
+          @attr name com.ninefive.flipicker:maskedWalletDetailsButtonTextAppearance
         */
         public static final int WalletFragmentStyle_maskedWalletDetailsButtonTextAppearance = 7;
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#maskedWalletDetailsHeaderTextAppearance}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#maskedWalletDetailsHeaderTextAppearance}
           attribute's value can be found in the {@link #WalletFragmentStyle} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name com.package.name:maskedWalletDetailsHeaderTextAppearance
+          @attr name com.ninefive.flipicker:maskedWalletDetailsHeaderTextAppearance
         */
         public static final int WalletFragmentStyle_maskedWalletDetailsHeaderTextAppearance = 5;
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#maskedWalletDetailsLogoImageType}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#maskedWalletDetailsLogoImageType}
           attribute's value can be found in the {@link #WalletFragmentStyle} array.
 
 
@@ -1141,11 +1141,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <tr><td><code>classic</code></td><td>1</td><td></td></tr>
 <tr><td><code>monochrome</code></td><td>2</td><td></td></tr>
 </table>
-          @attr name com.package.name:maskedWalletDetailsLogoImageType
+          @attr name com.ninefive.flipicker:maskedWalletDetailsLogoImageType
         */
         public static final int WalletFragmentStyle_maskedWalletDetailsLogoImageType = 10;
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#maskedWalletDetailsLogoTextColor}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#maskedWalletDetailsLogoTextColor}
           attribute's value can be found in the {@link #WalletFragmentStyle} array.
 
 
@@ -1156,17 +1156,17 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.package.name:maskedWalletDetailsLogoTextColor
+          @attr name com.ninefive.flipicker:maskedWalletDetailsLogoTextColor
         */
         public static final int WalletFragmentStyle_maskedWalletDetailsLogoTextColor = 9;
         /**
-          <p>This symbol is the offset where the {@link com.package.name.R.attr#maskedWalletDetailsTextAppearance}
+          <p>This symbol is the offset where the {@link com.ninefive.flipicker.R.attr#maskedWalletDetailsTextAppearance}
           attribute's value can be found in the {@link #WalletFragmentStyle} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name com.package.name:maskedWalletDetailsTextAppearance
+          @attr name com.ninefive.flipicker:maskedWalletDetailsTextAppearance
         */
         public static final int WalletFragmentStyle_maskedWalletDetailsTextAppearance = 4;
     };

@@ -29,7 +29,7 @@ android {
     buildToolsVersion "20.0.0"
  
     defaultConfig {
-        applicationId "com.package.name"
+        applicationId "com.ninefive.flipicker"
         minSdkVersion 15
         targetSdkVersion 21
         versionCode 1

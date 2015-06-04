@@ -22,6 +22,10 @@ public:
     
     static cocos2d::Scene* createScene();
     
+    // flipping action forever
+    cocos2d::DrawNode* FlippingCard;
+    cocos2d::Action* foreveraction = nullptr;
+    
     // screen position
     cocos2d::Size visibleSize;
     cocos2d::Vec2 origin;

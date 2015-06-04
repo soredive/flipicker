@@ -276,7 +276,8 @@ void TypeText::AddSpriteBtns(Sprite* pSender, int i){
     pSender->addChild(menu);
     
     auto SizeLabel = Size(rect.size.width*0.8, rect.size.height*0.8);
-    auto label = Label::createWithTTF("ANOTHER", "fonts/GROTESKIA.otf", (int)(GetFontSize(10)*r), SizeLabel);
+//    auto label = Label::createWithTTF("ANOTHER", "fonts/GROTESKIA.otf", (int)(GetFontSize(10)*r), SizeLabel);
+    auto label = Label::createWithTTF("ANOTHER", "fonts/NanumGothic_Coding.ttf", (int)(GetFontSize(10)*r), SizeLabel);
     label->setHorizontalAlignment(TextHAlignment::CENTER);
     label->setVerticalAlignment(TextVAlignment::CENTER);
 //    label->setColor(colorTable[g_defaultcolor].color);
@@ -394,9 +395,15 @@ void TypeText::GoPick(){
 }
 
 void TypeText::TransToPick(float dt){
-//    std::string a = "선택은 ";
-//    a += result;
+    std::string a = "선택은 ";
+    a += result;
 //    MessageBox(a.c_str(), "선택 결과");
+    log("result is %s",a.c_str());
+    
+    // stop flipping
+    if(foreveraction){
+        FlippingCard->stopAction(foreveraction);
+    }
     auto nextscene = FinalScene::createScene();
     Director::getInstance()->replaceScene(TransitionFadeBL::create(1.0f, nextscene));
 }
@@ -404,7 +411,7 @@ void TypeText::TransToPick(float dt){
 void TypeText::ShowFlippingScene(){
     FlippingLayer = Layer::create();
     
-    DrawNode* FlippingCard = DrawNode::create();
+    FlippingCard = DrawNode::create();
     auto w1 = visibleSize.width*0.3;
     auto h1 = visibleSize.height*0.3;
     Vec2 rect[4];
@@ -448,12 +455,12 @@ void TypeText::ShowFlippingScene(){
     
     auto labelwidth = 0.0f;
     
-    auto label1 = Label::createWithTTF("FLIP", "fonts/GROTESKIA.otf", BaseFontSize * r);
+    auto label1 = Label::createWithTTF("FLIP", "fonts/GROTESKIA.otf", (int)(BaseFontSize * r));
     label1->setColor(colorTable[g_defaultcolor].color);
     label1->setAnchorPoint(Vec2::ANCHOR_TOP_LEFT);
     labelwidth += label1->getBoundingBox().size.width;
     
-    auto label2 = Label::createWithTTF(" THE PHONE", "fonts/GROTESKIA.otf", BaseFontSize * r);
+    auto label2 = Label::createWithTTF(" THE PHONE", "fonts/GROTESKIA.otf", (int)(BaseFontSize * r));
     label2->setColor(Color3B(0x63,0x63,0x63));
     label2->setAnchorPoint(Vec2::ANCHOR_TOP_RIGHT);
     labelwidth += label2->getBoundingBox().size.width;
@@ -470,8 +477,7 @@ void TypeText::ShowFlippingScene(){
     // animation
     auto flipAnimation = RotateBy::create(2, Vec3(0, 360, 0));
     auto forever = RepeatForever::create(Sequence::create(flipAnimation, NULL));
-//    FlippingCard->runAction(Sequence::create(flipAnimation,flipAnimation,flipAnimation, NULL));
-    FlippingCard->runAction(forever);
+    foreveraction = FlippingCard->runAction(forever);
  }
 
 

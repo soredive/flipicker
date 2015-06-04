@@ -12,6 +12,7 @@
 #include <cocos2d.h>
 #include "JniBridge.h"
 #include "TypeTextScene.h"
+#include "FinalScene.h"
 
 ////// for jni start
 #include "platform/android/jni/JniHelper.h"
@@ -38,6 +39,9 @@ extern "C" {
     void Java_org_cocos2dx_cpp_AppActivity_callNativeFlipEvent(){
         auto ins = TypeText::RefTypeText;
         ins->TransToPick(1);
+//        auto nextscene = FinalScene::createScene();
+//        Director::getInstance()->replaceScene(TransitionFadeBL::create(1.0f, nextscene));
+
     }
     
     
