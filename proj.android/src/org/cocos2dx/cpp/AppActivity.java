@@ -93,7 +93,7 @@ public class AppActivity extends Cocos2dxActivity implements SensorEventListener
 
     @Override
     public void onSensorChanged(SensorEvent event){
-        synchronized (this){
+        //synchronized (this){
 //            Log.d("Sensor", "onSensorChanged: " + event.sensor.getType() + ", x: " + event.values[0] + ", y: " + event.values[1] + ", z: " + event.values[2]);
 //            if(event.sensor.getType() == Sensor.TYPE_GYROSCOPE){
 //                Log.d("Gyro x: ", " "+event.values[0] + ", y: " + event.values[1] + ", z: " + event.values[2]);
@@ -170,7 +170,7 @@ public class AppActivity extends Cocos2dxActivity implements SensorEventListener
 
                 }
             }
-        }
+        //}
     }
 
     @Override

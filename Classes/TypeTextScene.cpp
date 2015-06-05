@@ -15,7 +15,8 @@
 #include "ui/CocosGUI.h"
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-#include "platform/android/jni/JniBridge.h"
+//#include "platform/android/jni/JniBridge.h"
+#include "JniBridge.h"
 #endif
 
 #define COCOS2D_DEBUG 1
@@ -56,6 +57,9 @@ bool TypeText::init(){
         
         IsWaiting = false;
         RefTypeText = this;
+        
+        // add notification listener
+        Director::getInstance()->getEventDispatcher()->addCustomEventListener("fliped.flipicker", CC_CALLBACK_1(TypeText::DoNotification,this));
    }
     
     // size factor
@@ -389,9 +393,18 @@ void TypeText::GoPick(){
     // call gyro sensor ready here
     #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
         CallToJavaStartSensor();
+        //this->scheduleOnce(schedule_selector(TypeText::TransToPick),3.0f);
     #else
-        this->scheduleOnce(schedule_selector(TypeText::TransToPick),3.0f);
+        //this->scheduleOnce(schedule_selector(TypeText::TransToPick),3.0f);
     #endif
+}
+
+// notice check
+void TypeText::DoNotification(Ref* ref){
+    if (IsWaiting) {
+        IsWaiting = false;
+        TransToPick(1.0f);
+    }
 }
 
 void TypeText::TransToPick(float dt){

@@ -24,13 +24,13 @@ extern std::vector<struct colorinfo> colorTable;
 extern std::string select_result;
 
 Scene* FinalScene::createScene(){
-    auto s = Scene::create();
+    auto scene = Scene::create();
     
-    auto l = FinalScene::create();
+    auto layer = FinalScene::create();
     
-    s->addChild(l);
+    scene->addChild(layer);
     
-    return s;
+    return scene;
 }
 
 bool FinalScene::init(){
@@ -52,6 +52,8 @@ bool FinalScene::init(){
     auto logmsg = std::string("final scene inited!!! ")+" "+path+"04result_back_default.png";
     log("okokokokok %s",logmsg.c_str());
    
+    
+    
     //frame select
     menuGotoFrameSelect = MenuItemImage::create(
                                                 path+"02input_selmenu_blackbg_default.png",
@@ -60,6 +62,9 @@ bool FinalScene::init(){
     menuGotoFrameSelect->setScale(r*menuscale);
     menuGotoFrameSelect->setPosition(Vec2(padding * r,this->getBoundingBox().getMaxY()-padding * r));
     menuGotoFrameSelect->setAnchorPoint(Vec2::ANCHOR_TOP_LEFT);
+    
+    
+    
     
     //color select
     menuGotoSetting = MenuItemImage::create(
@@ -70,6 +75,8 @@ bool FinalScene::init(){
     menuGotoSetting->setPosition(Vec2(this->getBoundingBox().getMaxX()- padding * r,this->getBoundingBox().getMaxY()-padding * r));
     menuGotoSetting->setAnchorPoint(Vec2::ANCHOR_TOP_RIGHT);
     
+    
+    CCTextureAtlas::drawNumberOfQuads(<#ssize_t n#>)
     
     // backbtn
     menuGotoBackbtn = MenuItemImage::create(
@@ -104,8 +111,6 @@ bool FinalScene::init(){
         label->setPosition(visibleSize.width/2, visibleSize.height/2);
         label->setVisible(true);
         this->addChild(label);
-        
-        
     }
     
     return true;

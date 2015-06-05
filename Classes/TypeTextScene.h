@@ -22,6 +22,9 @@ public:
     
     static cocos2d::Scene* createScene();
     
+    // notification things
+    void DoNotification(cocos2d::Ref* ref);
+    
     // flipping action forever
     cocos2d::DrawNode* FlippingCard;
     cocos2d::Action* foreveraction = nullptr;
