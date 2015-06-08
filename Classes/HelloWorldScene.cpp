@@ -2,6 +2,9 @@
 #include "FrameSelectScene.h"
 #include <string.h>
 #include <stdio.h>
+
+// for sqlite3
+#include "sqlite3.h"
 USING_NS_CC;
 
 
@@ -108,6 +111,39 @@ bool HelloWorld::init()
     
     auto job = CC_SCHEDULE_SELECTOR(HelloWorld::goFrameSelect);
     this->scheduleOnce(job, 1.0f);
+    
+    // sqlite setting
+    sqlite3 *pdb = NULL;
+    int result;
+    std::string dbPath;
+    
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+//    dbPath = FileUtils::getInstance()->getWritablePath()+"save.db3";
+//    result = sqlite3_open(dbPath.c_str(), &pdb);
+//    if(result!=SQLITE_OK){
+//        log("open database failed, number %d",result);
+//    }
+#endif
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+//    dbPath = FileUtils::getInstance()->fullPathForFilename("save.db3");
+//    dbPath = FileUtils::getInstance()->getWritablePath();
+//    dbPath += "/save.db3";
+//    
+//    FILE* file = fopen(dbPath.c_str(), "r");
+//    if (file==nullptr) {
+//        long size;
+//        const char* data = (char*)FileUtils::getInstance()->getFileData("dict.db", "rb", &size);
+//        file = fopen(dbPath.c_str(), "wb");
+//        fwrite(data, size, 1, file);
+//        CC_SAFE_DELETE_ARRAY(data);
+//    }
+#endif
+    
+//    result = sqlite3_exec(pdb, "create table if not exists colorsetting(idx integer primary key autoincrement, default_color int)", nullptr, nullptr, nullptr);
+//    if(result != SQLITE_OK){
+//        log("craete table failed");
+//    }
+//    sqlite3_close(pdb);
     
     return true;
 }
