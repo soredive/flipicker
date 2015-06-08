@@ -13,7 +13,6 @@
 #include "JniBridge.h"
 #include "TypeTextScene.h"
 #include "FinalScene.h"
-
 ////// for jni start
 #include "platform/android/jni/JniHelper.h"
 #include <jni.h>

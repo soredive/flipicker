@@ -39,6 +39,9 @@ import android.hardware.SensorManager;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.util.Log;
+
+import java.util.TimerTask;
+import java.util.Timer;
 // for gyro sensor
 
 public class AppActivity extends Cocos2dxActivity implements SensorEventListener {
@@ -228,10 +231,35 @@ public class AppActivity extends Cocos2dxActivity implements SensorEventListener
 
     // call cpp from Android to go flip end scene!
     public void callNativeCPPCall(){
-        callNativeFlipEvent();
+        runOnGLThread(new Runnable() {
+            @Override
+            public void run() {
+                callNativeFlipEvent();
+            }
+        });
     }
     public static native void callNativeFlipEvent();
 
+
+
+
+
+    ///////////////
+//    public static void showAlertDialog(final String title,final String message) {
+//
+//        //we must use runOnUiThread here
+//        app.runOnUiThread(new Runnable() {
+//            @Override
+//            public void run() {
+//                AlertDialog alertDialog = new AlertDialog.Builder(app).create();
+//                alertDialog.setTitle(title);
+//                alertDialog.setMessage(message);
+//                alertDialog.setIcon(R.drawable.icon);
+//                alertDialog.show();
+//            }
+//        });
+//    }
+    ///////////////
 
 
 

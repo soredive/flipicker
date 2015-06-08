@@ -74,9 +74,8 @@ bool FinalScene::init(){
     menuGotoSetting->setScale(r*menuscale);
     menuGotoSetting->setPosition(Vec2(this->getBoundingBox().getMaxX()- padding * r,this->getBoundingBox().getMaxY()-padding * r));
     menuGotoSetting->setAnchorPoint(Vec2::ANCHOR_TOP_RIGHT);
-    
-    
-    CCTextureAtlas::drawNumberOfQuads(<#ssize_t n#>)
+
+        
     
     // backbtn
     menuGotoBackbtn = MenuItemImage::create(
