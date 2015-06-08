@@ -164,8 +164,8 @@ public class AppActivity extends Cocos2dxActivity implements SensorEventListener
                         }
                         if(ok == true){
                             // ok flipped
-                            Log.d("Backed !!!!!!!","Backed !!!!!!!");
-                            endFlipSensor();
+                            Log.d("Backed !!!!!!!", "Backed !!!!!!!");
+                            //endFlipSensor();
                             callNativeCPPCall();
 
                         }
@@ -234,6 +234,7 @@ public class AppActivity extends Cocos2dxActivity implements SensorEventListener
         runOnGLThread(new Runnable() {
             @Override
             public void run() {
+                endFlipSensor();
                 callNativeFlipEvent();
             }
         });
