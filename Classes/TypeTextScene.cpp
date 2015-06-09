@@ -408,11 +408,6 @@ void TypeText::DoNotification(Ref* ref){
 }
 
 void TypeText::TransToPick(float dt){
-    std::string a = "선택은 ";
-    a += result;
-//    MessageBox(a.c_str(), "선택 결과");
-    log("result is %s",a.c_str());
-    
     // stop flipping
     if(foreveraction){
         FlippingCard->stopAction(foreveraction);

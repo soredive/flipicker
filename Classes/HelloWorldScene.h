@@ -2,6 +2,7 @@
 #define __HELLOWORLD_SCENE_H__
 
 #include "cocos2d.h"
+#include "sqlite3.h"
 
 // color info
 struct colorinfo {
@@ -35,9 +36,11 @@ public:
     float padding = 90.0f;
     
     void goFrameSelect(float t);
-    
+        
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
 };
+
+sqlite3* OpenDatabase();
 
 #endif // __HELLOWORLD_SCENE_H__

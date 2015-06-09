@@ -42,12 +42,89 @@ Scene* HelloWorld::createScene()
     return scene;
 }
 
+sqlite3* OpenDatabase(){
+    sqlite3 *pdb = NULL;
+    int result;
+    std::string dbPath;
+    
+    // open database
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    dbPath = FileUtils::getInstance()->getWritablePath()+"save.db3";
+    
+#endif
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    //dbPath = FileUtils::getInstance()->fullPathForFilename("save.db3");
+    dbPath = FileUtils::getInstance()->getWritablePath();
+    dbPath += "/save.db3";
+    
+    FILE* file = fopen(dbPath.c_str(), "r");
+    if (file==nullptr) {
+        long size;
+        const char* data = (char*)FileUtils::getInstance()->getFileData("dict.db", "rb", &size);
+        file = fopen(dbPath.c_str(), "wb");
+        fwrite(data, size, 1, file);
+        CC_SAFE_DELETE_ARRAY(data);
+    }
+#endif
+    result = sqlite3_open(dbPath.c_str(), &pdb);
+    if(result!=SQLITE_OK){
+        log("open database failed, number %d",result);
+    }
+    return pdb;
+}
+
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
 {
+    ///////////////////////////////////////////////////////////////
+    //                 Get Default Color
+    // sqlite setting
+    sqlite3 *pdb = OpenDatabase();
+    int result;
+    std::string dbPath;
+    
+    // create table
+    result = sqlite3_exec(pdb, "create table if not exists colorsetting(idx integer primary key autoincrement, default_color int)", nullptr, nullptr, nullptr);
+    if(result != SQLITE_OK){
+        log("craete table failed");
+    }
+    
+    // get default color
+    char *errMsg;
+    std::string select_query = "select default_color from colorsetting limit 1";
+    sqlite3_stmt* statement;
+    if (sqlite3_prepare(pdb, select_query.c_str(), -1, &statement, nullptr) == SQLITE_OK) {
+        if (sqlite3_step(statement) == SQLITE_ROW) {
+            g_defaultcolor = sqlite3_column_int(statement, 0);
+        }else{
+            // if no row
+            // set default color
+            std::string insert_query = "insert into colorsetting (default_color) values (1)";
+            sqlite3_exec(pdb, insert_query.c_str(), nullptr, nullptr, &errMsg);
+        }
+    }else{
+        // if select failed
+        // set default color
+        std::string insert_query = "insert into colorsetting (default_color) values (1)";
+        sqlite3_exec(pdb, insert_query.c_str(), nullptr, nullptr, &errMsg);
+    }
+    sqlite3_finalize(statement);
+    sqlite3_close(pdb);
+    
+    auto initColor3b = colorTable[g_defaultcolor].color;
+    auto initColor4b = Color4B(initColor3b);
+    //              End get Default Color
+    //////////////////////////////
+    
+    
+    
+    
+    
+    
     //////////////////////////////
     // 1. super init first
-    if ( !LayerColor::initWithColor(Color4B(106,208,17,255)))
+//    if ( !LayerColor::initWithColor(Color4B(106,208,17,255)))
+    if ( !LayerColor::initWithColor(initColor4b))
     {
         return false;
     }
@@ -111,39 +188,6 @@ bool HelloWorld::init()
     
     auto job = CC_SCHEDULE_SELECTOR(HelloWorld::goFrameSelect);
     this->scheduleOnce(job, 1.0f);
-    
-    // sqlite setting
-    sqlite3 *pdb = NULL;
-    int result;
-    std::string dbPath;
-    
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-//    dbPath = FileUtils::getInstance()->getWritablePath()+"save.db3";
-//    result = sqlite3_open(dbPath.c_str(), &pdb);
-//    if(result!=SQLITE_OK){
-//        log("open database failed, number %d",result);
-//    }
-#endif
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-//    dbPath = FileUtils::getInstance()->fullPathForFilename("save.db3");
-//    dbPath = FileUtils::getInstance()->getWritablePath();
-//    dbPath += "/save.db3";
-//    
-//    FILE* file = fopen(dbPath.c_str(), "r");
-//    if (file==nullptr) {
-//        long size;
-//        const char* data = (char*)FileUtils::getInstance()->getFileData("dict.db", "rb", &size);
-//        file = fopen(dbPath.c_str(), "wb");
-//        fwrite(data, size, 1, file);
-//        CC_SAFE_DELETE_ARRAY(data);
-//    }
-#endif
-    
-//    result = sqlite3_exec(pdb, "create table if not exists colorsetting(idx integer primary key autoincrement, default_color int)", nullptr, nullptr, nullptr);
-//    if(result != SQLITE_OK){
-//        log("craete table failed");
-//    }
-//    sqlite3_close(pdb);
     
     return true;
 }

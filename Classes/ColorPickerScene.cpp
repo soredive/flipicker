@@ -8,6 +8,7 @@
 #include "HelloWorldScene.h"
 #include "ColorPickerScene.h"
 #include "TypeTextScene.h"
+#include "sqlite3.h"
 
 USING_NS_CC;
 
@@ -113,6 +114,16 @@ void ColorPicker::selectColor(Touch* touch, Event* event){
     auto target = static_cast<Sprite *>(event->getCurrentTarget());
     auto tag = target->getTag();
     g_defaultcolor = tag - 10;
+    
+    sqlite3* pdb = OpenDatabase();
+    sqlite3_stmt* statement;
+    std::string update_query = "update colorsetting set default_color = ?";
+    sqlite3_prepare(pdb, update_query.c_str(), -1, &statement, nullptr);
+    sqlite3_bind_int(statement, 1, g_defaultcolor);
+    sqlite3_step(statement);
+    sqlite3_finalize(statement);
+    sqlite3_close(pdb);
+    
     auto scene = TypeText::createScene();
     Director::getInstance()->replaceScene(TransitionSplitCols::create(0.5f, scene));
 }

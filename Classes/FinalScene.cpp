@@ -50,9 +50,6 @@ bool FinalScene::init(){
     }
     
     auto logmsg = std::string("final scene inited!!! ")+" "+path+"04result_back_default.png";
-    log("okokokokok %s",logmsg.c_str());
-   
-    
     
     //frame select
     menuGotoFrameSelect = MenuItemImage::create(
@@ -63,9 +60,6 @@ bool FinalScene::init(){
     menuGotoFrameSelect->setPosition(Vec2(padding * r,this->getBoundingBox().getMaxY()-padding * r));
     menuGotoFrameSelect->setAnchorPoint(Vec2::ANCHOR_TOP_LEFT);
     
-    
-    
-    
     //color select
     menuGotoSetting = MenuItemImage::create(
                                             path+"02input_setting_blackbg_default.png",
@@ -74,8 +68,6 @@ bool FinalScene::init(){
     menuGotoSetting->setScale(r*menuscale);
     menuGotoSetting->setPosition(Vec2(this->getBoundingBox().getMaxX()- padding * r,this->getBoundingBox().getMaxY()-padding * r));
     menuGotoSetting->setAnchorPoint(Vec2::ANCHOR_TOP_RIGHT);
-
-        
     
     // backbtn
     menuGotoBackbtn = MenuItemImage::create(

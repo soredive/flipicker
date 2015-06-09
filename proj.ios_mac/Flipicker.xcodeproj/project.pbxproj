@@ -69,6 +69,7 @@
 		C337D0BD1B09A4FF00AACAAA /* transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = C337D0BC1B09A4FF00AACAAA /* transparent.png */; };
 		C337D0BF1B09AE9600AACAAA /* white1200x1200.png in Resources */ = {isa = PBXBuildFile; fileRef = C337D0BE1B09AE9600AACAAA /* white1200x1200.png */; };
 		C35A01BA1B01967F003536E2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C35A01B91B01967F003536E2 /* Images.xcassets */; };
+		C3CA804F1B2672FE0040D863 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = C3CA804E1B2672FE0040D863 /* sqlite3.c */; };
 		C3CFDA021B157CBD00C921F9 /* FinalScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3CFDA001B157CBD00C921F9 /* FinalScene.cpp */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
@@ -171,6 +172,8 @@
 		C337D0BC1B09A4FF00AACAAA /* transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = transparent.png; sourceTree = "<group>"; };
 		C337D0BE1B09AE9600AACAAA /* white1200x1200.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white1200x1200.png; sourceTree = "<group>"; };
 		C35A01B91B01967F003536E2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Flipicker iOS/Images.xcassets"; sourceTree = SOURCE_ROOT; };
+		C3CA804E1B2672FE0040D863 /* sqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sqlite3.c; sourceTree = "<group>"; };
+		C3CA80501B26B3B60040D863 /* sqlite3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
 		C3CFDA001B157CBD00C921F9 /* FinalScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FinalScene.cpp; sourceTree = "<group>"; };
 		C3CFDA011B157CBD00C921F9 /* FinalScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinalScene.h; sourceTree = "<group>"; };
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
@@ -322,6 +325,8 @@
 				C337D0BA1B05F33900AACAAA /* ColorPickerScene.h */,
 				C3CFDA001B157CBD00C921F9 /* FinalScene.cpp */,
 				C3CFDA011B157CBD00C921F9 /* FinalScene.h */,
+				C3CA804E1B2672FE0040D863 /* sqlite3.c */,
+				C3CA80501B26B3B60040D863 /* sqlite3.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -532,6 +537,7 @@
 				C337D0B41B04D5C000AACAAA /* TypeTextScene.cpp in Sources */,
 				C337D0B11B0466C500AACAAA /* FrameSelectScene.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				C3CA804F1B2672FE0040D863 /* sqlite3.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
