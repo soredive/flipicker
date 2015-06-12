@@ -395,7 +395,7 @@ void TypeText::GoPick(){
         CallToJavaStartSensor();
         //this->scheduleOnce(schedule_selector(TypeText::TransToPick),3.0f);
     #else
-        //this->scheduleOnce(schedule_selector(TypeText::TransToPick),3.0f);
+        this->scheduleOnce(schedule_selector(TypeText::TransToPick),3.0f);
     #endif
 }
 
